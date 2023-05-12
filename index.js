@@ -9,6 +9,7 @@ const expressLayouts = require('express-ejs-layouts');
 //Setting up Session Cookie and Passport
 const session = require('express-session');
 const passport = require('passport');
+const passportGoogle = require('./config/passport-google-oauth2-strategy');
 
 //Setting up Database and Mongo Store for Session Cookies
 const db = require('./config/mongoose');
