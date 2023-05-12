@@ -58,8 +58,13 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(passport.setAuthenticatedUser);
+
 app.use(flash());
 app.use(customMiddleware.setFlash);
+
+//use express router
+app.use('/', require('./routes'));
 
 app.listen(PORT, function (err) {
   if (err) {
