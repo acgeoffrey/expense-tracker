@@ -28,7 +28,16 @@ router.get(
 
 router.get('/signout', userController.destroySession);
 
+router.get('/dashboard/profile', (req, res) => {
+  res.render('profile', {
+    title: 'Profile | Expense Tracker',
+  });
+});
+
+router.get('/dashboard/stats', expenseTrackerController.stats);
+
 /*** CRUD ***/
 router.post('/create', expenseTrackerController.create);
+router.get('/delete/:id', expenseTrackerController.destroy);
 
 module.exports = router;
