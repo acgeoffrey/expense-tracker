@@ -16,8 +16,6 @@ passport.use(
           email: profile.emails[0].value,
         }).exec();
 
-        console.log(profile);
-
         if (user) {
           //set the user as req.user
           return done(null, user);
@@ -63,7 +61,7 @@ passport.checkAuthentication = function (req, res, next) {
   }
 
   //if the user is not authenticated
-  return res.redirect('/signin');
+  return res.redirect('/');
 };
 
 //Setting the user for the views

@@ -17,11 +17,15 @@ const dateSchema = new mongoose.Schema(
         ref: 'Expense',
       },
     ],
+    totalExpense: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-const Date = mongoose.model('Date', dateSchema);
-module.exports = Date;
+const Dates = mongoose.model('Dates', dateSchema);
+module.exports = Dates;

@@ -6,3 +6,29 @@
 <button onclick="location.href='/signout'" class="btn">
   Sign Out
 </button>
+
+<form action="/create" method="post">
+  <input type="text" name="name" placeholder="Where to do spent?">
+  <input type="number" name="cost" placeholder="Cost">
+  <button type="submit">Add Expense</button>
+</form>
+
+<% if (dates) {%>
+  <div>
+    <ul>
+      <% for (expense of dates.expenses) {%>
+        <li>
+          <p>
+            <%= expense.name %>
+          </p>
+          <p>
+            <%= expense.cost %>
+          </p>
+        </li>
+        <%}%>
+    </ul>
+  </div>
+  <p>
+    <%=dates.totalExpense%>
+  </p>
+  <%}%>

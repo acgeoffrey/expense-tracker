@@ -3,7 +3,9 @@ const router = express.Router();
 const passport = require('passport');
 
 const userController = require('../controllers/userController');
+const expenseTrackerController = require('../controllers/expenseTrackerController');
 
+/*** AUTHENTICATION ROUTES ***/
 router.get(
   '/dashboard',
   passport.checkAuthentication,
@@ -20,10 +22,13 @@ router.get(
 
 router.get(
   '/users/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/signin' }),
+  passport.authenticate('google', { failureRedirect: '/' }),
   userController.createSession
 );
 
 router.get('/signout', userController.destroySession);
+
+/*** CRUD ***/
+router.post('/create', expenseTrackerController.create);
 
 module.exports = router;

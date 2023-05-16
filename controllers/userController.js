@@ -1,10 +1,17 @@
 const User = require('../models/user');
+const Expense = require('../models/expense');
+const Dates = require('../models/date');
 
 /*** Render the Dashboard ***/
 module.exports.dashboard = async function (req, res) {
+  let today = new Date().toLocaleDateString('en-GB').split('/').join('-');
+  let date = await Dates.find({ date: today, user: req.user }).populate(
+    'expenses'
+  );
   if (req.isAuthenticated()) {
     return res.render('dashboard', {
       title: 'Dashboard | Expense Tracker',
+      dates: date[0],
     });
   } else {
     return res.redirect('/');
