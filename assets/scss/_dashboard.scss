@@ -93,19 +93,23 @@
 }
 
 #change-date-dash {
-  position: relative;
-  top: 0%;
-  @include flex(center);
-  gap: 1rem;
+  position: absolute;
+  top: 12rem;
+  right: 5rem;
+  label {
+    font-size: 1.7rem;
+    font-weight: 600;
+  }
   input {
     font-family: $font;
     font-weight: 500;
+    margin-right: 1rem;
   }
   button {
-    height: 2rem;
-    width: 2rem;
+    height: 3rem;
+    width: 3rem;
     background-color: rgb(253, 186, 86);
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 50%;
     cursor: pointer;
     i {

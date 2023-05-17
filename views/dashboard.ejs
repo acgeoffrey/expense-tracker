@@ -1,5 +1,12 @@
 <%const today=new Date().toLocaleDateString('en-GB').split('/').reverse().join('-')%>
   <%- include('_form') -%>
+    <div id="change-date-dash">
+      <form action="/dashboard" method="post">
+        <label for="date">Change Date: </label>
+        <input type="date" name="date" max="<%= today %>" required>
+        <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+      </form>
+    </div>
     <div id="dashboard-div">
 
       <div id="dash-name">
@@ -9,67 +16,57 @@
         </h1>
       </div>
 
-      <% if (dates.date==today.split('-').reverse().join('-')) {%>
-        <div>
-          <h6>TODAY (<%=dates.date%>)</h6>
-          <div id="change-date-dash">
-            <form action="/dashboard" method="post">
-              <input type="date" name="date" max="<%= today %>" required>
-              <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-            </form>
-          </div>
-        </div>
-        <%} else {%>
+      <% if (dates) {%>
+        <% if (dates.date==today.split('-').reverse().join('-')) {%>
           <div>
-            <h6>
-              <%=dates.date%>
-            </h6>
-            <div id="change-date-dash">
-              <form action="/dashboard" method="post">
-                <input type="date" name="date" required>
-                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-              </form>
-            </div>
+            <h6>TODAY (<%=dates.date%>)</h6>
           </div>
-          <%}%>
-            <% if (dates) {%>
-              <div class="total-today">
-                <div>
-                  <i class="fa-solid fa-indian-rupee-sign"></i>
-                  <p class="tt-para">
-                    <%=dates.totalExpense%>
-                  </p>
+          <%} else {%>
+            <div>
+              <h6>
+                <%=dates.date%>
+              </h6>
+            </div>
+            <%}%>
+              <% if (dates) {%>
+                <div class="total-today">
+                  <div>
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                    <p class="tt-para">
+                      <%=dates.totalExpense%>
+                    </p>
+                  </div>
+                  <p>INR</p>
                 </div>
-                <p>INR</p>
-              </div>
-              <div>
-                <ul>
-                  <% for (expense of dates.expenses) {%>
-                    <li class="single-expense">
-                      <div class="single-name-tag">
-                        <p>
-                          <%= expense.name %>
-                        </p>
-                        <p class="se-tag">
-                          <%=expense.tag%>
-                        </p>
-                      </div>
-                      <div class="single-cost-del">
+                <div>
+                  <ul>
+                    <% for (expense of dates.expenses) {%>
+                      <li class="single-expense">
+                        <div class="single-name-tag">
+                          <p>
+                            <%= expense.name %>
+                          </p>
+                          <p class="se-tag">
+                            <%=expense.tag%>
+                          </p>
+                        </div>
+                        <div class="single-cost-del">
 
-                        <p>
-                          <i class="fa-solid fa-indian-rupee-sign"></i>
-                          <%= expense.cost %>
-                        </p>
-                        <a href="/delete/<%= expense._id %>"><i class="fa-solid fa-trash"></i></a>
-                      </div>
-                    </li>
-                    <%}%>
-                </ul>
-              </div>
+                          <p>
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                            <%= expense.cost %>
+                          </p>
+                          <a href="/delete/<%= expense._id %>"><i class="fa-solid fa-trash"></i></a>
+                        </div>
+                      </li>
+                      <%}%>
+                  </ul>
+                </div>
 
-              <%}%>
+                <%}%>
 
-                <button id="add-expense-btn" class="add-expense btn">
-                  <i class="fa-solid fa-plus"></i>
-                </button>
+                  <button id="add-expense-btn" class="add-expense btn">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
     </div>
+    <%}%>
