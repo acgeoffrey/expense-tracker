@@ -25,6 +25,7 @@
   @include flex(space-around);
   flex-direction: column;
   border-radius: 2rem;
+  z-index: 9999;
   h3 {
     font-size: 2rem;
     margin-bottom: 2rem;
