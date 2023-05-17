@@ -6,6 +6,7 @@
         <input type="date" name="date" value="<%= today%>" max="<%=today%>" required> <br>
         <input type="text" name="name" placeholder="Expense made for?" required> <br>
         <input type="number" name="cost" placeholder="Amount" required> <br>
+        <input type="text" name="notes" placeholder="Notes (optional)"> <br>
         <select name="tag" id="tag-select" required>
           <option value="">-- Select a Tag--</option>
           <% for (item of user.tags){%>

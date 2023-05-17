@@ -22,6 +22,7 @@ module.exports.create = async (req, res) => {
         cost: req.body.cost,
         user: req.user,
         date: dates,
+        notes: req.body.notes,
         tag: req.body.tag,
       });
 

@@ -42,12 +42,17 @@
                   <ul>
                     <% for (expense of dates.expenses) {%>
                       <li class="single-expense">
-                        <div class="single-name-tag">
-                          <p>
-                            <%= expense.name %>
-                          </p>
-                          <p class="se-tag">
-                            <%=expense.tag%>
+                        <div class="single-expense-left">
+                          <div class="single-name-tag">
+                            <p>
+                              <%= expense.name %>
+                            </p>
+                            <p class="se-tag">
+                              <%=expense.tag%>
+                            </p>
+                          </div>
+                          <p class="se-notes">
+                            <%= expense.notes %>
                           </p>
                         </div>
                         <div class="single-cost-del">
@@ -69,4 +74,9 @@
                     <i class="fa-solid fa-plus"></i>
                   </button>
     </div>
-    <%}%>
+    <%} else {%>
+      <div id="warning-not-found">
+        <img src="/images/warning.svg" alt="Not-Found">
+        <h1>No Expenses were logged on this date!</h1>
+      </div>
+      <%}%>

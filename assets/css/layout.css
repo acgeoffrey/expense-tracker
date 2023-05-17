@@ -240,13 +240,13 @@ nav img {
 }
 
 .single-expense {
-  height: 8rem;
   width: 60%;
   margin-left: 50%;
   margin-bottom: 1rem;
-  background-color: rgba(214, 214, 214, 0.534);
+  background-color: rgba(214, 214, 214, 0.219);
   border-radius: 1rem;
-  padding: 0 3rem;
+  padding: 2rem 3rem;
+  box-shadow: 1px 1px 2px 1px rgba(128, 128, 128, 0.295);
   transform: translateX(-50%);
   display: flex;
   justify-content: space-between;
@@ -264,21 +264,35 @@ nav img {
   font-size: 1.6rem;
 }
 
+.single-expense-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  gap: 0.5rem;
+}
+
+.se-notes {
+  font-size: 1.6rem;
+  align-self: flex-start;
+  color: rgb(255, 168, 54);
+}
+
 .single-name-tag {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  flex-direction: column;
+  align-self: flex-start;
 }
 .single-name-tag .se-tag {
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   background-color: rgba(0, 0, 0, 0.473);
-  padding: 0.5rem 1rem;
+  padding: 0.1rem 1rem;
   border-radius: 1rem;
   font-weight: 400;
-  align-self: flex-start;
 }
 
 .fa-trash {
@@ -310,6 +324,17 @@ nav img {
 #change-date-dash button i {
   font-size: 1.4rem;
   color: white;
+}
+
+#warning-not-found {
+  margin-top: 5rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5rem;
 }
 
 #stats-div {
