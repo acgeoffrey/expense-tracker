@@ -17,12 +17,12 @@ module.exports.create = async (req, res) => {
       } else {
         dates = dateFind[0];
       }
-
       let newExpense = await Expense.create({
         name: req.body.name,
         cost: req.body.cost,
         user: req.user,
         date: dates,
+        tag: req.body.tag,
       });
 
       dates.expenses.push(newExpense);
@@ -56,18 +56,41 @@ module.exports.destroy = async (req, res) => {
 };
 
 module.exports.stats = async (req, res) => {
-  const dates = await Dates.find({ user: req.user });
-  let today = parseInt(new Date().toLocaleDateString('en-GB').slice(3, 5));
-  let totalMonth = 0;
-  for (let i = 0; i < dates.length; i++) {
-    let a = parseInt(dates[i].date.slice(3, 5));
-    if (a == today) {
-      totalMonth += dates[i].totalExpense;
-    }
-  }
+  try {
+    let data = {
+      total: 0,
+    };
 
-  res.render('stats', {
-    title: 'Statistics | Expense Tracker',
-    total_month: totalMonth,
-  });
+    let today = parseInt(
+      new Date().toLocaleDateString('en-GB').split('/').join('-').slice(3)
+    );
+    if (req.body.month) {
+      today = parseInt(req.body.month.split('-').reverse().join('-'));
+    }
+    const dates = await Dates.find({ user: req.user });
+    for (let i = 0; i < dates.length; i++) {
+      let a = parseInt(dates[i].date.slice(3));
+      if (a == today) {
+        data.total += dates[i].totalExpense;
+      }
+    }
+
+    const expense = await Expense.find({ user: req.user }).populate('date');
+    for (let i = 0; i < expense.length; i++) {
+      data[expense[i].tag] = 0;
+    }
+    for (let i = 0; i < expense.length; i++) {
+      let a = parseInt(expense[i].date.date.slice(3));
+      if (a == today) {
+        data[expense[i].tag] += parseInt(expense[i].cost);
+      }
+    }
+
+    res.render('stats', {
+      title: 'Statistics | Expense Tracker',
+      data: data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };

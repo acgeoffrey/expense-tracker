@@ -1,0 +1,367 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  font-family: "Quicksand", sans-serif;
+}
+
+nav {
+  height: 8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rem 4rem;
+}
+nav a {
+  text-decoration: none;
+  color: black;
+}
+nav h1 {
+  font-size: 3rem;
+}
+nav img {
+  height: 6rem;
+  width: 6rem;
+  border: 2px solid black;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+
+.nav-right-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-link {
+  display: inline-block;
+  width: 10rem;
+  height: 3rem;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+#login-main-div {
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: url("/images/bg-login.jpg");
+  background-size: cover;
+}
+#login-main-div h1 {
+  font-size: 10rem;
+  color: blanchedalmond;
+}
+
+#login-google-div {
+  height: 90%;
+  width: 30%;
+  border: 3px solid white;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 6px 1px rgba(128, 128, 128, 0.562);
+  background-color: rgba(255, 251, 245, 0.356);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/images/secure_login.svg");
+  background-repeat: no-repeat;
+  background-size: 60% 100%;
+  background-position-x: 45%;
+  padding-bottom: 10%;
+}
+#login-google-div button {
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 50%;
+  height: 5rem;
+  background-color: white;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.6rem;
+  border: 2px solid black;
+  box-shadow: 2px 2px 6px 1px rgba(128, 128, 128, 0.562);
+  border-radius: 1rem;
+  cursor: pointer;
+}
+#login-google-div button img {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+#add-expense-btn {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+}
+#add-expense-btn i {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.add-expense-div {
+  position: fixed;
+  top: 5%;
+  right: 2%;
+  width: 20%;
+  height: 90%;
+  background-color: rgb(255, 246, 232);
+  box-shadow: 2px 2px 9px 1px rgba(128, 128, 128, 0.5);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 2rem;
+}
+.add-expense-div h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.add-expense-div input,
+.add-expense-div select {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  font-size: 1.6rem;
+  height: 4rem;
+  width: 30rem;
+  margin-bottom: 1rem;
+  border: 2px solid black;
+  border-radius: 1rem;
+  text-align: center;
+}
+.add-expense-div .btn-form {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  height: 4rem;
+  width: 20rem;
+  background-color: blanchedalmond;
+  border: 2px solid rgb(253, 186, 86);
+  border-radius: 1rem;
+  color: black;
+  cursor: pointer;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 1rem;
+}
+
+#close-form-div {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  cursor: pointer;
+}
+#close-form-div i {
+  font-size: 2rem;
+}
+
+#dashboard-div {
+  margin-top: 3rem;
+  width: 100%;
+  height: 100vh;
+  padding: 0 5%;
+}
+#dashboard-div h4,
+#dashboard-div h1 {
+  font-size: 3rem;
+}
+#dashboard-div h4 {
+  font-weight: 500;
+}
+#dashboard-div h6 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin: 2rem 0;
+}
+#dashboard-div li {
+  list-style: none;
+}
+
+.total-today {
+  height: 10rem;
+  width: 40%;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+  margin: 4rem 0;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2rem;
+}
+.total-today div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+.total-today div i {
+  font-size: 2rem;
+}
+.total-today div p {
+  color: white;
+  font-size: 6rem;
+  font-weight: 600;
+}
+.total-today p {
+  color: gray;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.single-expense {
+  height: 8rem;
+  width: 60%;
+  margin-left: 50%;
+  margin-bottom: 1rem;
+  background-color: rgba(214, 214, 214, 0.534);
+  border-radius: 1rem;
+  padding: 0 3rem;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.single-expense .single-cost-del {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.single-expense p i {
+  font-size: 1.6rem;
+}
+
+.single-name-tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: column;
+}
+.single-name-tag .se-tag {
+  color: white;
+  font-size: 1.4rem;
+  background-color: rgba(0, 0, 0, 0.473);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-weight: 400;
+  align-self: flex-start;
+}
+
+.fa-trash {
+  color: #cf354c;
+}
+
+#stats-div {
+  margin-top: 3rem;
+  width: 100%;
+  height: 100vh;
+  padding: 0 5%;
+}
+
+#stats-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#stats-form input {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  font-size: 1.6rem;
+  height: 4rem;
+  width: 30rem;
+  margin-bottom: 1rem;
+  border: 2px solid black;
+  border-radius: 1rem;
+  text-align: center;
+  width: 20rem;
+  margin-right: 2rem;
+}
+#stats-form button {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  height: 4rem;
+  width: 15rem;
+  background-color: blanchedalmond;
+  border: 2px solid rgb(253, 186, 86);
+  border-radius: 1rem;
+  color: black;
+  cursor: pointer;
+}
+
+.month-stats {
+  height: 10rem;
+  width: 40%;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+  margin: 4rem 0;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2rem;
+  height: 8rem;
+}
+
+.month-stats-total {
+  height: 12rem;
+}
+.month-stats-total .ms-name {
+  font-size: 3rem;
+  font-weight: 600;
+}
+.month-stats-total .ms-amount {
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+.month-stats-total .ms-amount i {
+  font-size: 2.2rem;
+}
+
+.ms-name {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.ms-amount {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+.ms-amount i {
+  font-size: 1.6rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.noty_layout {
+  font-size: 1.6rem;
+}

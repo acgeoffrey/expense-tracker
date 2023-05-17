@@ -1,0 +1,33 @@
+$background-color: rgb(235, 235, 235);
+$font: 'Quicksand', sans-serif;
+
+@mixin flex($justify-content) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: center;
+}
+
+@mixin input() {
+  font-family: $font;
+  font-weight: 500;
+  font-size: 1.6rem;
+  height: 4rem;
+  width: 30rem;
+  margin-bottom: 1rem;
+  border: 2px solid black;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+@mixin amountDisplay() {
+  height: 10rem;
+  width: 40%;
+  background-color: black;
+  color: white;
+  @include flex(space-between);
+  padding: 0 3rem;
+  margin: 4rem 0;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2rem;
+}

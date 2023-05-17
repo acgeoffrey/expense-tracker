@@ -1,35 +1,52 @@
 <%const today=new Date().toLocaleDateString('en-GB').split('/').reverse().join('-')%>
+  <%- include('_form') -%>
+    <div id="dashboard-div">
 
-  <a href="/dashboard/stats">Stats</a>
-  <a href="/dashboard/profile">Profile</a>
-
-  <form action="/create" method="post">
-    <input type="date" name="date" value="<%= today%>" max="<%=today%>">
-    <input type="text" name="name" placeholder="Expense made for?">
-    <input type="number" name="cost" placeholder="Amount">
-    <select name="tag" id="">
-      <option value="">Tag</option>
-    </select>
-    <button type="submit">Add Expense</button>
-  </form>
-
-  <% if (dates) {%>
-    <div>
-      <ul>
-        <% for (expense of dates.expenses) {%>
-          <li>
-            <p>
-              <%= expense.name %>
+      <div id="dash-name">
+        <h4>Hello,</h4>
+        <h1>
+          <%= user.name %>
+        </h1>
+      </div>
+      <h6>TODAY (<%=new Date().toLocaleDateString('en-GB')%>)</h6>
+      <% if (dates) {%>
+        <div class="total-today">
+          <div>
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+            <p class="tt-para">
+              <%=dates.totalExpense%>
             </p>
-            <p>
-              <%= expense.cost %>
-            </p>
-            <a href="/delete/<%= expense._id %>"><i class="fa-solid fa-trash"></i></a>
-          </li>
-          <%}%>
-      </ul>
+          </div>
+          <p>INR</p>
+        </div>
+        <div>
+          <ul>
+            <% for (expense of dates.expenses) {%>
+              <li class="single-expense">
+                <div class="single-name-tag">
+                  <p>
+                    <%= expense.name %>
+                  </p>
+                  <p class="se-tag">
+                    <%=expense.tag%>
+                  </p>
+                </div>
+                <div class="single-cost-del">
+
+                  <p>
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                    <%= expense.cost %>
+                  </p>
+                  <a href="/delete/<%= expense._id %>"><i class="fa-solid fa-trash"></i></a>
+                </div>
+              </li>
+              <%}%>
+          </ul>
+        </div>
+
+        <%}%>
+
+          <button id="add-expense-btn" class="add-expense btn">
+            <i class="fa-solid fa-plus"></i>
+          </button>
     </div>
-    <p>
-      <%=dates.totalExpense%>
-    </p>
-    <%}%>

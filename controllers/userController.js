@@ -46,3 +46,17 @@ module.exports.destroySession = function (req, res) {
   req.flash('success', 'You have Logged out!');
   return res.redirect('/');
 };
+
+/*** Add Tags ***/
+module.exports.addTags = async (req, res) => {
+  try {
+    if (req.user) {
+      const user = await User.findById(req.params.id);
+      user.tags.push(req.body.tag);
+      user.save();
+      res.redirect('back');
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};

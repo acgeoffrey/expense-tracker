@@ -1,0 +1,33 @@
+<%const today=new Date().toLocaleDateString('en-GB').split('/').reverse().join('-')%>
+  <div class="add-expense-div hidden">
+    <div id="add-expense-form">
+      <h3>Add an Expense</h3>
+      <form action="/create" method="post">
+        <input type="date" name="date" value="<%= today%>" max="<%=today%>" required> <br>
+        <input type="text" name="name" placeholder="Expense made for?" required> <br>
+        <input type="number" name="cost" placeholder="Amount" required> <br>
+        <select name="tag" id="tag-select" required>
+          <option value="">-- Select a Tag--</option>
+          <% for (item of user.tags){%>
+            <option value="<%= item %>">
+              <%= item.charAt(0).toUpperCase() + item.slice(1) %>
+            </option>
+            <%} %>
+        </select> <br>
+        <button type="submit" class="btn-form">Add Expense</button>
+      </form>
+    </div>
+
+    <div id="add-tag-form">
+      <h3>Add Tags</h3>
+      <form action="/add-tags/<%= user.id %>" method="post">
+        <input type="text" name="tag" id="add-tag" placeholder="Enter Tag Name"> <br>
+        <button type="submit" class="btn-form">
+          Add Tag
+        </button>
+      </form>
+    </div>
+    <div id="close-form-div">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+  </div>

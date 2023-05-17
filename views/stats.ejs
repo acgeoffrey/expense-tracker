@@ -1,3 +1,45 @@
-<p>This Month expense: <span>
-    <%= total_month%>
-  </span> </p>
+<%let month=new Date().toLocaleDateString('en-GB').split('/').reverse().join('-').slice(0,7)%>
+  <div id="stats-div">
+
+    <div id="stats-form">
+
+      <form action="/dashboard/stats" method="post">
+        <input type="month" name="month" max="<%=month%>" required>
+        <button type="submit">Get Statistics</button>
+      </form>
+    </div>
+
+    <%let keys=Object.keys(data)%>
+
+      <% for (const i in data){%>
+        <% if (i.toUpperCase()=="TOTAL" ){%>
+          <div class="month-stats month-stats-total">
+            <p class="ms-name">
+              <%= i.toUpperCase()%>
+            </p>
+            <div>
+              <p class="ms-amount">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                <span>
+                  <%=data[i]%>
+                </span>
+              </p>
+            </div>
+          </div>
+          <%}else{%>
+            <div class="month-stats">
+              <p class="ms-name">
+                <%= i.toUpperCase()%>
+              </p>
+              <div>
+                <p class="ms-amount">
+                  <i class="fa-solid fa-indian-rupee-sign"></i>
+                  <span>
+                    <%=data[i]%>
+                  </span>
+                </p>
+              </div>
+            </div>
+            <%}%>
+              <%}%>
+  </div>

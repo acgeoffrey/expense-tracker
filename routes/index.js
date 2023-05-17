@@ -28,16 +28,12 @@ router.get(
 
 router.get('/signout', userController.destroySession);
 
-router.get('/dashboard/profile', (req, res) => {
-  res.render('profile', {
-    title: 'Profile | Expense Tracker',
-  });
-});
-
 router.get('/dashboard/stats', expenseTrackerController.stats);
+router.post('/dashboard/stats', expenseTrackerController.stats);
 
 /*** CRUD ***/
 router.post('/create', expenseTrackerController.create);
 router.get('/delete/:id', expenseTrackerController.destroy);
+router.post('/add-tags/:id', userController.addTags);
 
 module.exports = router;

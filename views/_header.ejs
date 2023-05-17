@@ -1,0 +1,15 @@
+<% if (locals.user) {%>
+  <nav id="navigation-div">
+    <div id="nav-heading">
+      <a href="/">
+        <h1>Expense Tracker</h1>
+      </a>
+    </div>
+    <div class="nav-right-div">
+      <img src=<%=user.avatar%> alt="Profile Picture">
+      <a href="/dashboard/stats" class="nav-link">Stats</a>
+
+      <a href="/signout" class="nav-link">Signout</a>
+    </div>
+  </nav>
+  <%}%>

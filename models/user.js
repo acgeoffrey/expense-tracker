@@ -14,6 +14,11 @@ const userSchema = new mongoose.Schema(
     avatar: {
       type: String,
     },
+    tags: [
+      {
+        type: String,
+      },
+    ],
   },
   {
     timestamps: true,

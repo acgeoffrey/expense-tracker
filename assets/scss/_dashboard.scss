@@ -1,0 +1,92 @@
+@import './form';
+
+#dashboard-div {
+  margin-top: 3rem;
+  width: 100%;
+  height: 100vh;
+  padding: 0 5%;
+  h4,
+  h1 {
+    font-size: 3rem;
+  }
+  h4 {
+    font-weight: 500;
+  }
+
+  h6 {
+    text-align: center;
+    font-size: 1.6rem;
+    margin: 2rem 0;
+  }
+
+  li {
+    list-style: none;
+  }
+}
+
+.total-today {
+  @include amountDisplay;
+  div {
+    @include flex(center);
+    gap: 3rem;
+
+    i {
+      font-size: 2rem;
+    }
+
+    p {
+      color: white;
+      font-size: 6rem;
+      font-weight: 600;
+    }
+  }
+  p {
+    color: gray;
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+}
+
+.single-expense {
+  height: 8rem;
+  width: 60%;
+  margin-left: 50%;
+  margin-bottom: 1rem;
+  background-color: rgba(214, 214, 214, 0.534);
+  border-radius: 1rem;
+  padding: 0 3rem;
+  transform: translateX(-50%);
+  @include flex(space-between);
+  font-size: 2rem;
+  font-weight: 600;
+
+  .single-cost-del {
+    @include flex(center);
+    gap: 2rem;
+  }
+  p {
+    i {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.single-name-tag {
+  @include flex(center);
+  gap: 1rem;
+  flex-direction: column;
+
+  .se-tag {
+    color: white;
+    font-size: 1.4rem;
+    background-color: rgba(0, 0, 0, 0.473);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-weight: 400;
+    align-self: flex-start;
+  }
+}
+
+.fa-trash {
+  color: #cf354c;
+}
