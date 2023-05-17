@@ -40,8 +40,9 @@
 }
 .month-stats-total {
   height: 12rem;
-  border: 0.7rem solid rgb(253, 186, 86);
+  box-shadow: 1px 1px 6px 2px grey;
   margin-bottom: 4rem;
+  width: 45%;
 
   .ms-name {
     font-size: 3rem;
