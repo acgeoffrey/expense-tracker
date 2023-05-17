@@ -1,5 +1,6 @@
 $background-color: rgb(235, 235, 235);
 $font: 'Quicksand', sans-serif;
+$number-font: 'Noto Sans Mono', monospace;
 
 @mixin flex($justify-content) {
   display: flex;

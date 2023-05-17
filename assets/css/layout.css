@@ -16,10 +16,17 @@ body {
 
 nav {
   height: 8rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5rem 4rem;
+  position: fixed;
+  background-color: blanchedalmond;
+  z-index: 999;
+  top: 0%;
+  overflow: hidden;
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.041);
 }
 nav a {
   text-decoration: none;
@@ -175,7 +182,7 @@ nav img {
 }
 
 #dashboard-div {
-  margin-top: 3rem;
+  margin-top: 12rem;
   width: 100%;
   height: 100vh;
   padding: 0 5%;
@@ -223,6 +230,7 @@ nav img {
   color: white;
   font-size: 6rem;
   font-weight: 600;
+  font-family: "Noto Sans Mono", monospace;
 }
 .total-today p {
   color: gray;
@@ -276,17 +284,47 @@ nav img {
   color: #cf354c;
 }
 
+#change-date-dash {
+  position: relative;
+  top: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#change-date-dash input {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+}
+#change-date-dash button {
+  height: 2rem;
+  width: 2rem;
+  background-color: rgb(253, 186, 86);
+  border: 1px solid black;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#change-date-dash button i {
+  font-size: 1.4rem;
+  color: white;
+}
+
 #stats-div {
-  margin-top: 3rem;
+  margin-top: 12rem;
   width: 100%;
   height: 100vh;
   padding: 0 5%;
+}
+#stats-div h1 {
+  text-align: center;
+  font-size: 3rem;
 }
 
 #stats-form {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 5rem;
 }
 #stats-form input {
   font-family: "Quicksand", sans-serif;
@@ -327,22 +365,31 @@ nav img {
   margin-left: 50%;
   transform: translateX(-50%);
   border-radius: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   height: 8rem;
 }
 
 .month-stats-total {
   height: 12rem;
+  border: 0.7rem solid rgb(253, 186, 86);
+  margin-bottom: 4rem;
 }
 .month-stats-total .ms-name {
   font-size: 3rem;
   font-weight: 600;
 }
 .month-stats-total .ms-amount {
-  font-size: 2.6rem;
-  font-weight: 700;
+  font-family: "Noto Sans Mono", monospace;
 }
 .month-stats-total .ms-amount i {
+  text-align: right;
   font-size: 2.2rem;
+  width: auto;
+}
+.month-stats-total .ms-amount span {
+  font-size: 4rem;
+  font-weight: 700;
 }
 
 .ms-name {
@@ -351,11 +398,14 @@ nav img {
 }
 
 .ms-amount {
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-family: "Noto Sans Mono", monospace;
 }
 .ms-amount i {
   font-size: 1.6rem;
+}
+.ms-amount span {
+  font-size: 2.4rem;
+  font-weight: 700;
 }
 
 .hidden {

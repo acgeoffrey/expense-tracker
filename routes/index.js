@@ -11,6 +11,11 @@ router.get(
   passport.checkAuthentication,
   userController.dashboard
 );
+router.post(
+  '/dashboard',
+  passport.checkAuthentication,
+  userController.dashboard
+);
 
 router.get('/', userController.login);
 

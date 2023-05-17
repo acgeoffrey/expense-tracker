@@ -4,18 +4,25 @@ const Dates = require('../models/date');
 
 /*** Render the Dashboard ***/
 module.exports.dashboard = async function (req, res) {
-  let today = new Date().toLocaleDateString('en-GB').split('/').join('-');
-  let date = await Dates.find({ date: today, user: req.user }).populate({
-    path: 'expenses',
-    options: { sort: [{ cost: -1 }] },
-  });
-  if (req.isAuthenticated()) {
-    return res.render('dashboard', {
-      title: 'Dashboard | Expense Tracker',
-      dates: date[0],
+  try {
+    let today = new Date().toLocaleDateString('en-GB').split('/').join('-');
+    if (req.body.date) {
+      today = req.body.date.split('-').reverse().join('-');
+    }
+    let date = await Dates.find({ date: today, user: req.user }).populate({
+      path: 'expenses',
+      options: { sort: [{ cost: -1 }] },
     });
-  } else {
-    return res.redirect('/');
+    if (req.isAuthenticated()) {
+      return res.render('dashboard', {
+        title: 'Dashboard | Expense Tracker',
+        dates: date[0],
+      });
+    } else {
+      return res.redirect('/');
+    }
+  } catch (err) {
+    console.log(err);
   }
 };
 
@@ -51,9 +58,11 @@ module.exports.destroySession = function (req, res) {
 module.exports.addTags = async (req, res) => {
   try {
     if (req.user) {
+      const tag = req.body.tag;
       const user = await User.findById(req.params.id);
-      user.tags.push(req.body.tag);
+      user.tags.push(tag);
       user.save();
+      req.flash('success', `${tag} Tag added!`);
       res.redirect('back');
     }
   } catch (err) {

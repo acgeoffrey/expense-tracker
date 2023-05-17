@@ -8,45 +8,68 @@
           <%= user.name %>
         </h1>
       </div>
-      <h6>TODAY (<%=new Date().toLocaleDateString('en-GB')%>)</h6>
-      <% if (dates) {%>
-        <div class="total-today">
-          <div>
-            <i class="fa-solid fa-indian-rupee-sign"></i>
-            <p class="tt-para">
-              <%=dates.totalExpense%>
-            </p>
-          </div>
-          <p>INR</p>
-        </div>
+
+      <% if (dates.date==today.split('-').reverse().join('-')) {%>
         <div>
-          <ul>
-            <% for (expense of dates.expenses) {%>
-              <li class="single-expense">
-                <div class="single-name-tag">
-                  <p>
-                    <%= expense.name %>
-                  </p>
-                  <p class="se-tag">
-                    <%=expense.tag%>
-                  </p>
-                </div>
-                <div class="single-cost-del">
-
-                  <p>
-                    <i class="fa-solid fa-indian-rupee-sign"></i>
-                    <%= expense.cost %>
-                  </p>
-                  <a href="/delete/<%= expense._id %>"><i class="fa-solid fa-trash"></i></a>
-                </div>
-              </li>
-              <%}%>
-          </ul>
+          <h6>TODAY (<%=dates.date%>)</h6>
+          <div id="change-date-dash">
+            <form action="/dashboard" method="post">
+              <input type="date" name="date" max="<%= today %>" required>
+              <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+            </form>
+          </div>
         </div>
+        <%} else {%>
+          <div>
+            <h6>
+              <%=dates.date%>
+            </h6>
+            <div id="change-date-dash">
+              <form action="/dashboard" method="post">
+                <input type="date" name="date" required>
+                <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+              </form>
+            </div>
+          </div>
+          <%}%>
+            <% if (dates) {%>
+              <div class="total-today">
+                <div>
+                  <i class="fa-solid fa-indian-rupee-sign"></i>
+                  <p class="tt-para">
+                    <%=dates.totalExpense%>
+                  </p>
+                </div>
+                <p>INR</p>
+              </div>
+              <div>
+                <ul>
+                  <% for (expense of dates.expenses) {%>
+                    <li class="single-expense">
+                      <div class="single-name-tag">
+                        <p>
+                          <%= expense.name %>
+                        </p>
+                        <p class="se-tag">
+                          <%=expense.tag%>
+                        </p>
+                      </div>
+                      <div class="single-cost-del">
 
-        <%}%>
+                        <p>
+                          <i class="fa-solid fa-indian-rupee-sign"></i>
+                          <%= expense.cost %>
+                        </p>
+                        <a href="/delete/<%= expense._id %>"><i class="fa-solid fa-trash"></i></a>
+                      </div>
+                    </li>
+                    <%}%>
+                </ul>
+              </div>
 
-          <button id="add-expense-btn" class="add-expense btn">
-            <i class="fa-solid fa-plus"></i>
-          </button>
+              <%}%>
+
+                <button id="add-expense-btn" class="add-expense btn">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
     </div>

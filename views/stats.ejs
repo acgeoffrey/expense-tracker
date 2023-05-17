@@ -9,37 +9,37 @@
       </form>
     </div>
 
-    <%let keys=Object.keys(data)%>
+    <h1>
+      <%=monthData.month%>
+    </h1>
 
-      <% for (const i in data){%>
-        <% if (i.toUpperCase()=="TOTAL" ){%>
-          <div class="month-stats month-stats-total">
-            <p class="ms-name">
-              <%= i.toUpperCase()%>
-            </p>
-            <div>
-              <p class="ms-amount">
-                <i class="fa-solid fa-indian-rupee-sign"></i>
-                <span>
-                  <%=data[i]%>
-                </span>
-              </p>
-            </div>
-          </div>
-          <%}else{%>
-            <div class="month-stats">
-              <p class="ms-name">
-                <%= i.toUpperCase()%>
-              </p>
-              <div>
-                <p class="ms-amount">
-                  <i class="fa-solid fa-indian-rupee-sign"></i>
-                  <span>
-                    <%=data[i]%>
-                  </span>
-                </p>
-              </div>
-            </div>
-            <%}%>
-              <%}%>
+    <div class="month-stats month-stats-total">
+      <p class="ms-name">
+        TOTAL
+      </p>
+      <div>
+        <p class="ms-amount">
+          <i class="fa-solid fa-indian-rupee-sign"></i>
+          <span>
+            <%=monthData.total%>
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <% for (const i in data){%>
+      <div class="month-stats">
+        <p class="ms-name">
+          <%= i.toUpperCase()%>
+        </p>
+        <div>
+          <p class="ms-amount">
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+            <span>
+              <%=data[i]%>
+            </span>
+          </p>
+        </div>
+      </div>
+      <%}%>
   </div>

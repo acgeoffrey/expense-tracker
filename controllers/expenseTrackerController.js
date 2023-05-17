@@ -57,21 +57,29 @@ module.exports.destroy = async (req, res) => {
 
 module.exports.stats = async (req, res) => {
   try {
-    let data = {
+    let data = {};
+    let monthData = {
       total: 0,
+      month:
+        new Date().toLocaleString('default', { month: 'long' }) +
+        ' ' +
+        new Date().toLocaleDateString('en-GB').split('/').join('-').slice(6),
     };
-
     let today = parseInt(
       new Date().toLocaleDateString('en-GB').split('/').join('-').slice(3)
     );
     if (req.body.month) {
       today = parseInt(req.body.month.split('-').reverse().join('-'));
+      monthData.month = new Date(req.body.month).toLocaleString('default', {
+        month: 'long',
+      });
+      monthData.month += ' ' + req.body.month.slice(0, 4);
     }
     const dates = await Dates.find({ user: req.user });
     for (let i = 0; i < dates.length; i++) {
       let a = parseInt(dates[i].date.slice(3));
       if (a == today) {
-        data.total += dates[i].totalExpense;
+        monthData.total += dates[i].totalExpense;
       }
     }
 
@@ -89,6 +97,7 @@ module.exports.stats = async (req, res) => {
     res.render('stats', {
       title: 'Statistics | Expense Tracker',
       data: data,
+      monthData: monthData,
     });
   } catch (err) {
     console.log(err);

@@ -18,8 +18,15 @@ body {
 
 nav {
   height: 8rem;
+  width: 100%;
   @include flex(space-between);
   padding: 5rem 4rem;
+  position: fixed;
+  background-color: blanchedalmond;
+  z-index: 999;
+  top: 0%;
+  overflow: hidden;
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.041);
 
   a {
     text-decoration: none;
