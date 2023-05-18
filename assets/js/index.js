@@ -11,6 +11,7 @@
     $('#add-expense-btn').removeClass('hidden');
   });
 
+  //show the dropdown menu on mobile resolution
   if (window.innerWidth <= 600) {
     $('#profile-image').click(function (e) {
       $('.mobile-nav').toggleClass('hidden');

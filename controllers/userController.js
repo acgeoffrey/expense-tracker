@@ -17,6 +17,7 @@ module.exports.dashboard = async function (req, res) {
       return res.render('dashboard', {
         title: 'Dashboard | Expense Tracker',
         dates: date[0],
+        link: 'Stats',
       });
     } else {
       return res.redirect('/');

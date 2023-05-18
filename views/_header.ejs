@@ -8,12 +8,20 @@
     <div class="nav-right-div">
       <img src=<%=user.avatar%> alt="Profile Picture" id="profile-image">
       <div class="stats-signout">
-        <a href="/dashboard/stats" class="nav-link">Stats</a>
-        <a href="/signout" class="nav-link">Signout</a>
+        <% if (link=="Dashboard" ) {%>
+          <a href="/dashboard" class="nav-link"">Dashboard</a>
+          <%} else {%>
+            <a href=" /dashboard/stats" class="nav-link"">Stats</a>
+          <%}%> 
+        <a href=" /signout" class="nav-link">Signout</a>
       </div>
       <div class="mobile-nav hidden">
-        <a href="/dashboard/stats" class="nav-link">Stats</a>
-        <a href="/signout" class="nav-link">Signout</a>
+        <% if (link=="Dashboard" ) {%>
+          <a href="/dashboard" class="nav-link"">Dashboard</a>
+          <%} else {%>
+            <a href=" /dashboard/stats" class="nav-link"">Stats</a>
+          <%}%> 
+        <a href=" /signout" class="nav-link">Signout</a>
       </div>
     </div>
   </nav>

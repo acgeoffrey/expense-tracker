@@ -55,8 +55,7 @@
   }
   nav .nav-link {
     font-size: 1.7rem;
-    width: 5rem;
-    margin-right: 1rem;
+    margin-right: 0rem;
   }
   .add-expense-div {
     width: 40%;

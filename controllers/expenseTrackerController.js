@@ -99,6 +99,7 @@ module.exports.stats = async (req, res) => {
       title: 'Statistics | Expense Tracker',
       data: data,
       monthData: monthData,
+      link: 'Dashboard',
     });
   } catch (err) {
     console.log(err);
