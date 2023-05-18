@@ -10,4 +10,10 @@
     $('.add-expense-div').addClass('hidden');
     $('#add-expense-btn').removeClass('hidden');
   });
+
+  if (window.innerWidth <= 600) {
+    $('#profile-image').click(function (e) {
+      $('.mobile-nav').toggleClass('hidden');
+    });
+  }
 }

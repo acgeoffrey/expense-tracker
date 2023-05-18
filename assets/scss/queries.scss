@@ -1,0 +1,341 @@
+@import './variables';
+
+/**** 1600px ****/
+@media (max-width: 100em) {
+  .add-expense-div {
+    input,
+    select {
+      width: 22rem;
+    }
+  }
+
+  #close-form-div {
+    top: 3%;
+  }
+}
+
+/**** 1200px ****/
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+
+  .add-expense-div {
+    width: 30%;
+    input,
+    select {
+      width: 25rem;
+    }
+
+    .btn-form {
+      width: 20rem;
+    }
+  }
+
+  #dashboard-div {
+    h4,
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+
+  .total-today {
+    width: 50%;
+  }
+  .single-expense {
+    width: 70%;
+  }
+
+  .month-stats {
+    width: 55%;
+  }
+
+  .month-stats-total {
+    width: 60%;
+  }
+}
+
+/**** 800px ****/
+@media (max-width: 50em) {
+  #login-main-div {
+    h1 {
+      font-size: 8rem;
+    }
+  }
+  nav {
+    padding: 4rem 3rem;
+
+    img {
+      height: 5rem;
+      width: 5rem;
+      margin-right: 1rem;
+    }
+
+    .nav-link {
+      font-size: 1.7rem;
+      width: 5rem;
+      margin-right: 1rem;
+    }
+  }
+
+  .add-expense-div {
+    width: 40%;
+  }
+
+  #dashboard-div {
+    h4,
+    h1 {
+      font-size: 2rem;
+    }
+    h6 {
+      margin-top: 3rem;
+    }
+  }
+
+  .total-today {
+    width: 60%;
+  }
+  .single-expense {
+    width: 80%;
+  }
+
+  .month-stats {
+    width: 60%;
+  }
+
+  .month-stats-total {
+    width: 65%;
+  }
+  #stats-form {
+    margin-bottom: 3rem;
+  }
+}
+
+/**** 600px ****/
+
+@media (max-width: 37.5em) {
+  #login-main-div {
+    flex-direction: column;
+    justify-content: space-evenly;
+    h1 {
+      font-size: 8rem;
+    }
+  }
+
+  .stats-signout {
+    display: none;
+  }
+
+  nav {
+    h1 {
+      font-size: 2.8rem;
+    }
+  }
+
+  .add-expense-div {
+    width: 60%;
+  }
+
+  #dashboard-div {
+    margin-top: 9rem;
+    h6 {
+      margin-top: 5rem;
+    }
+  }
+
+  #change-date-dash {
+    top: 9rem;
+    right: 3rem;
+  }
+
+  .total-today {
+    width: 80%;
+    height: 8rem;
+    margin: 1rem 0;
+    margin-bottom: 3rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    div {
+      gap: 1.5rem;
+      p {
+        font-size: 5rem;
+      }
+    }
+  }
+  .single-expense {
+    width: 95%;
+    font-size: 1.7rem;
+    padding: 2rem;
+    .single-cost-del {
+      gap: 1rem;
+    }
+  }
+
+  .se-notes {
+    font-size: 1.3rem;
+  }
+
+  #stats-div {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+
+  .month-stats {
+    width: 80%;
+    height: 6rem;
+
+    .ms-name {
+      font-size: 1.8rem;
+    }
+
+    .ms-amount {
+      i {
+        font-size: 1.5rem;
+      }
+      span {
+        font-size: 2.2rem;
+      }
+    }
+  }
+
+  .month-stats-total {
+    width: 90%;
+    height: 7rem;
+
+    .ms-name {
+      font-size: 2.5rem;
+    }
+
+    .ms-amount {
+      i {
+        font-size: 2rem;
+      }
+      span {
+        font-size: 3.5rem;
+      }
+    }
+  }
+
+  #stats-form {
+    margin-bottom: 2rem;
+    input {
+      width: 12rem;
+    }
+    button {
+      font-size: 1.4rem;
+      width: 12rem;
+    }
+  }
+  #warning-not-found {
+    width: 70%;
+    margin-top: 50%;
+    transform: translate(-50%);
+    img {
+      width: 100%;
+    }
+  }
+}
+
+/**** 450px ****/
+
+@media (max-width: 28.125em) {
+  nav {
+    padding: 4rem 1rem;
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+
+  .add-expense-div {
+    top: 2%;
+    width: 75%;
+    height: 95%;
+  }
+
+  #dashboard-div {
+    margin-top: 9rem;
+    h4,
+    h1 {
+      font-size: 1.8rem;
+    }
+    h6 {
+      margin-top: 5rem;
+    }
+  }
+
+  #change-date-dash {
+    top: 9rem;
+    right: 1rem;
+    label {
+      font-size: 1.4rem;
+    }
+    input {
+      margin-right: 0.5rem;
+    }
+    button {
+      height: 2.5rem;
+      width: 2.5rem;
+      i {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .total-today {
+    width: 85%;
+    height: 8rem;
+    margin: 1rem 0;
+    margin-bottom: 3rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    div {
+      gap: 1.3rem;
+      p {
+        font-size: 4.5rem;
+      }
+    }
+  }
+  .single-expense {
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 1.8rem;
+  }
+
+  .se-notes {
+    font-size: 1.2rem;
+  }
+
+  .month-stats {
+    width: 95%;
+    height: 5rem;
+    .ms-name {
+      font-size: 1.7rem;
+    }
+
+    .ms-amount {
+      i {
+        font-size: 1.4rem;
+      }
+      span {
+        font-size: 2rem;
+      }
+    }
+  }
+  .month-stats-total {
+    width: 100%;
+    height: 6rem;
+    .ms-name {
+      font-size: 2.5rem;
+    }
+
+    .ms-amount {
+      i {
+        font-size: 1.6rem;
+      }
+      span {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}

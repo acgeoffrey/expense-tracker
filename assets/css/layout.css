@@ -23,7 +23,7 @@ nav {
   padding: 5rem 4rem;
   position: fixed;
   background-color: blanchedalmond;
-  z-index: 999;
+  z-index: 9;
   top: 0%;
   overflow: hidden;
   box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.041);
@@ -70,40 +70,21 @@ nav img {
   font-size: 10rem;
   color: blanchedalmond;
 }
-
-#login-google-div {
-  height: 90%;
-  width: 30%;
-  border: 3px solid white;
-  border-radius: 1rem;
-  box-shadow: 2px 2px 6px 1px rgba(128, 128, 128, 0.562);
-  background-color: rgba(255, 251, 245, 0.356);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url("/images/secure_login.svg");
-  background-repeat: no-repeat;
-  background-size: 60% 100%;
-  background-position-x: 45%;
-  padding-bottom: 10%;
-}
-#login-google-div button {
-  align-self: flex-end;
+#login-main-div button {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  width: 50%;
-  height: 5rem;
+  padding: 1rem 2.5rem;
   background-color: white;
   font-family: "Quicksand", sans-serif;
   font-size: 1.6rem;
   border: 2px solid black;
   box-shadow: 2px 2px 6px 1px rgba(128, 128, 128, 0.562);
-  border-radius: 1rem;
+  border-radius: 3rem;
   cursor: pointer;
 }
-#login-google-div button img {
+#login-main-div button img {
   height: 3.5rem;
   width: 3.5rem;
 }
@@ -303,6 +284,7 @@ nav img {
   position: absolute;
   top: 12rem;
   right: 5rem;
+  color: black;
 }
 #change-date-dash label {
   font-size: 1.7rem;
@@ -435,6 +417,25 @@ nav img {
 .ms-amount span {
   font-size: 2.4rem;
   font-weight: 700;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 7rem;
+  right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  border: 2px solid black;
+  z-index: 99;
+}
+.mobile-nav a:nth-child(2n) {
+  border-top: 1px solid black;
+  padding-top: 1rem;
 }
 
 .hidden {

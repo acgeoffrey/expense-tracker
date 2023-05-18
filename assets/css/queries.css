@@ -1,0 +1,276 @@
+/**** 1600px ****/
+@media (max-width: 100em) {
+  .add-expense-div input,
+  .add-expense-div select {
+    width: 22rem;
+  }
+  #close-form-div {
+    top: 3%;
+  }
+}
+/**** 1200px ****/
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+  .add-expense-div {
+    width: 30%;
+  }
+  .add-expense-div input,
+  .add-expense-div select {
+    width: 25rem;
+  }
+  .add-expense-div .btn-form {
+    width: 20rem;
+  }
+  #dashboard-div h4,
+  #dashboard-div h1 {
+    font-size: 2.5rem;
+  }
+  .total-today {
+    width: 50%;
+  }
+  .single-expense {
+    width: 70%;
+  }
+  .month-stats {
+    width: 55%;
+  }
+  .month-stats-total {
+    width: 60%;
+  }
+}
+/**** 800px ****/
+@media (max-width: 50em) {
+  #login-main-div h1 {
+    font-size: 8rem;
+  }
+  nav {
+    padding: 4rem 3rem;
+  }
+  nav img {
+    height: 5rem;
+    width: 5rem;
+    margin-right: 1rem;
+  }
+  nav .nav-link {
+    font-size: 1.7rem;
+    width: 5rem;
+    margin-right: 1rem;
+  }
+  .add-expense-div {
+    width: 40%;
+  }
+  #dashboard-div h4,
+  #dashboard-div h1 {
+    font-size: 2rem;
+  }
+  #dashboard-div h6 {
+    margin-top: 3rem;
+  }
+  .total-today {
+    width: 60%;
+  }
+  .single-expense {
+    width: 80%;
+  }
+  .month-stats {
+    width: 60%;
+  }
+  .month-stats-total {
+    width: 65%;
+  }
+  #stats-form {
+    margin-bottom: 3rem;
+  }
+}
+/**** 600px ****/
+@media (max-width: 37.5em) {
+  #login-main-div {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  #login-main-div h1 {
+    font-size: 8rem;
+  }
+  .stats-signout {
+    display: none;
+  }
+  nav h1 {
+    font-size: 2.8rem;
+  }
+  .add-expense-div {
+    width: 60%;
+  }
+  #dashboard-div {
+    margin-top: 9rem;
+  }
+  #dashboard-div h6 {
+    margin-top: 5rem;
+  }
+  #change-date-dash {
+    top: 9rem;
+    right: 3rem;
+  }
+  .total-today {
+    width: 80%;
+    height: 8rem;
+    margin: 1rem 0;
+    margin-bottom: 3rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  .total-today div {
+    gap: 1.5rem;
+  }
+  .total-today div p {
+    font-size: 5rem;
+  }
+  .single-expense {
+    width: 95%;
+    font-size: 1.7rem;
+    padding: 2rem;
+  }
+  .single-expense .single-cost-del {
+    gap: 1rem;
+  }
+  .se-notes {
+    font-size: 1.3rem;
+  }
+  #stats-div h1 {
+    font-size: 2.5rem;
+  }
+  .month-stats {
+    width: 80%;
+    height: 6rem;
+  }
+  .month-stats .ms-name {
+    font-size: 1.8rem;
+  }
+  .month-stats .ms-amount i {
+    font-size: 1.5rem;
+  }
+  .month-stats .ms-amount span {
+    font-size: 2.2rem;
+  }
+  .month-stats-total {
+    width: 90%;
+    height: 7rem;
+  }
+  .month-stats-total .ms-name {
+    font-size: 2.5rem;
+  }
+  .month-stats-total .ms-amount i {
+    font-size: 2rem;
+  }
+  .month-stats-total .ms-amount span {
+    font-size: 3.5rem;
+  }
+  #stats-form {
+    margin-bottom: 2rem;
+  }
+  #stats-form input {
+    width: 12rem;
+  }
+  #stats-form button {
+    font-size: 1.4rem;
+    width: 12rem;
+  }
+  #warning-not-found {
+    width: 70%;
+    margin-top: 50%;
+    transform: translate(-50%);
+  }
+  #warning-not-found img {
+    width: 100%;
+  }
+}
+/**** 450px ****/
+@media (max-width: 28.125em) {
+  nav {
+    padding: 4rem 1rem;
+  }
+  nav h1 {
+    font-size: 2.5rem;
+  }
+  .add-expense-div {
+    top: 2%;
+    width: 75%;
+    height: 95%;
+  }
+  #dashboard-div {
+    margin-top: 9rem;
+  }
+  #dashboard-div h4,
+  #dashboard-div h1 {
+    font-size: 1.8rem;
+  }
+  #dashboard-div h6 {
+    margin-top: 5rem;
+  }
+  #change-date-dash {
+    top: 9rem;
+    right: 1rem;
+  }
+  #change-date-dash label {
+    font-size: 1.4rem;
+  }
+  #change-date-dash input {
+    margin-right: 0.5rem;
+  }
+  #change-date-dash button {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  #change-date-dash button i {
+    font-size: 1.2rem;
+  }
+  .total-today {
+    width: 85%;
+    height: 8rem;
+    margin: 1rem 0;
+    margin-bottom: 3rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  .total-today div {
+    gap: 1.3rem;
+  }
+  .total-today div p {
+    font-size: 4.5rem;
+  }
+  .single-expense {
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 1.8rem;
+  }
+  .se-notes {
+    font-size: 1.2rem;
+  }
+  .month-stats {
+    width: 95%;
+    height: 5rem;
+  }
+  .month-stats .ms-name {
+    font-size: 1.7rem;
+  }
+  .month-stats .ms-amount i {
+    font-size: 1.4rem;
+  }
+  .month-stats .ms-amount span {
+    font-size: 2rem;
+  }
+  .month-stats-total {
+    width: 100%;
+    height: 6rem;
+  }
+  .month-stats-total .ms-name {
+    font-size: 2.5rem;
+  }
+  .month-stats-total .ms-amount i {
+    font-size: 1.6rem;
+  }
+  .month-stats-total .ms-amount span {
+    font-size: 2.5rem;
+  }
+}

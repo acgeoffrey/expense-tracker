@@ -23,7 +23,7 @@ nav {
   padding: 5rem 4rem;
   position: fixed;
   background-color: blanchedalmond;
-  z-index: 999;
+  z-index: 9;
   top: 0%;
   overflow: hidden;
   box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.041);
@@ -61,6 +61,23 @@ nav {
 @import './login';
 @import './dashboard';
 @import './stats';
+
+.mobile-nav {
+  position: fixed;
+  top: 7rem;
+  right: 1rem;
+  @include flex(center);
+  flex-direction: column;
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  border: 2px solid black;
+  z-index: 99;
+  a:nth-child(2n) {
+    border-top: 1px solid black;
+    padding-top: 1rem;
+  }
+}
 
 .hidden {
   display: none;

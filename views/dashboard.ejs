@@ -2,7 +2,7 @@
   <%- include('_form') -%>
     <div id="change-date-dash">
       <form action="/dashboard" method="post">
-        <label for="date">Change Date: </label>
+        <label for="date">Change Date: </label> <br>
         <input type="date" name="date" max="<%= today %>" required>
         <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
       </form>
