@@ -234,6 +234,11 @@
       width: 100%;
     }
   }
+
+  #add-expense-btn {
+    height: 6rem;
+    width: 6rem;
+  }
 }
 
 /**** 450px ****/
@@ -264,6 +269,7 @@
   }
 
   #change-date-dash {
+    display: none;
     top: 9rem;
     right: 1rem;
     label {
@@ -279,6 +285,19 @@
         font-size: 1.2rem;
       }
     }
+  }
+
+  #name-icon-div {
+    @include flex(space-between);
+    cursor: pointer;
+    i {
+      font-size: 2.5rem;
+      color: #cf354c;
+    }
+  }
+
+  #calendar-icon {
+    display: inline-block;
   }
 
   .total-today {
@@ -299,6 +318,19 @@
     width: 100%;
     font-size: 1.6rem;
     padding: 1.8rem;
+  }
+
+  .single-expense-left {
+    width: 70%;
+  }
+
+  .single-name-tag {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .se-tag {
+    align-self: flex-start;
   }
 
   .se-notes {
@@ -336,5 +368,12 @@
         font-size: 2.5rem;
       }
     }
+  }
+}
+
+/**** 360px ****/
+@media (max-width: 23em) {
+  .single-expense-left {
+    width: 65%;
   }
 }

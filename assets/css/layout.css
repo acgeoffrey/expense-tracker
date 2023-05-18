@@ -319,6 +319,10 @@ nav img {
   gap: 5rem;
 }
 
+#calendar-icon {
+  display: none;
+}
+
 #stats-div {
   margin-top: 12rem;
   width: 100%;

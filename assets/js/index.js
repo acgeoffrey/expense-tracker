@@ -17,4 +17,10 @@
       $('.mobile-nav').toggleClass('hidden');
     });
   }
+
+  //show input calendar to change date on dashboard
+  $('#calendar-icon').click(function (e) {
+    $('#calendar-icon').css('display', 'none');
+    $('#change-date-dash').css('display', 'block');
+  });
 }

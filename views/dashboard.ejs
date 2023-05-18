@@ -8,12 +8,17 @@
       </form>
     </div>
     <div id="dashboard-div">
+      <div id="name-icon-div">
 
-      <div id="dash-name">
-        <h4>Hello,</h4>
-        <h1>
-          <%= user.name %>
-        </h1>
+        <div id="dash-name">
+          <h4>Hello,</h4>
+          <h1>
+            <%= user.name %>
+          </h1>
+        </div>
+        <div id="calendar-icon">
+          <i class="fa-solid fa-calendar-days"></i>
+        </div>
       </div>
 
       <% if (dates) {%>
