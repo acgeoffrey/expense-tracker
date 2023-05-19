@@ -5,20 +5,14 @@ const userSchema = new mongoose.Schema(
   {
     email: {
       type: String,
-      get: crypto.decrypt,
-      set: crypto.encrypt,
       required: true,
     },
     name: {
       type: String,
-      get: crypto.decrypt,
-      set: crypto.encrypt,
       required: true,
     },
     avatar: {
       type: String,
-      get: crypto.decrypt,
-      set: crypto.encrypt,
     },
     tags: [
       {
