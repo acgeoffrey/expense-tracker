@@ -78,49 +78,51 @@ module.exports.destroy = async (req, res) => {
 
 module.exports.stats = async (req, res) => {
   try {
-    let data = {};
-    let monthData = {
-      totalExpense: 0,
-      totalIncome: 0,
-      month:
-        new Date().toLocaleString('default', { month: 'long' }) +
-        ' ' +
-        new Date().toLocaleDateString('en-GB').split('/').join('-').slice(6),
-    };
-    let today = parseInt(
-      new Date().toLocaleDateString('en-GB').split('/').join('-').slice(3)
-    );
-    if (req.body.month) {
-      today = parseInt(req.body.month.split('-').reverse().join('-'));
-      monthData.month = new Date(req.body.month).toLocaleString('default', {
-        month: 'long',
-      });
-      monthData.month += ' ' + req.body.month.slice(0, 4);
-    }
-    const dates = await Dates.find({ user: req.user });
-    for (let i = 0; i < dates.length; i++) {
-      let a = parseInt(dates[i].date.slice(3));
-      if (a == today) {
-        monthData.totalExpense += dates[i].totalExpense;
-        monthData.totalIncome += dates[i].totalIncome;
-      }
-    }
-
-    const expense = await Expense.find({ user: req.user }).populate('date');
-    for (let i = 0; i < expense.length; i++) {
-      data[expense[i].tag] = {
-        amount: 0,
-        type: expense[i].type,
-      };
-    }
-
-    for (let i = 0; i < expense.length; i++) {
-      let a = parseInt(expense[i].date.date.slice(3));
-      if (a == today) {
-        data[expense[i].tag].amount += parseInt(expense[i].amount);
-      }
-    }
     if (req.isAuthenticated()) {
+      let data = {};
+      let monthData = {
+        totalExpense: 0,
+        totalIncome: 0,
+        deficit: 0,
+        month:
+          new Date().toLocaleString('default', { month: 'long' }) +
+          ' ' +
+          new Date().toLocaleDateString('en-GB').split('/').join('-').slice(6),
+      };
+      let today = parseInt(
+        new Date().toLocaleDateString('en-GB').split('/').join('-').slice(3)
+      );
+      if (req.body.month) {
+        today = parseInt(req.body.month.split('-').reverse().join('-'));
+        monthData.month = new Date(req.body.month).toLocaleString('default', {
+          month: 'long',
+        });
+        monthData.month += ' ' + req.body.month.slice(0, 4);
+      }
+      const dates = await Dates.find({ user: req.user });
+      for (let i = 0; i < dates.length; i++) {
+        let a = parseInt(dates[i].date.slice(3));
+        if (a == today) {
+          monthData.totalExpense += dates[i].totalExpense;
+          monthData.totalIncome += dates[i].totalIncome;
+        }
+      }
+
+      const expense = await Expense.find({ user: req.user }).populate('date');
+      for (let i = 0; i < expense.length; i++) {
+        data[expense[i].tag] = {
+          amount: 0,
+          type: expense[i].type,
+        };
+      }
+
+      for (let i = 0; i < expense.length; i++) {
+        let a = parseInt(expense[i].date.date.slice(3));
+        if (a == today) {
+          data[expense[i].tag].amount += parseInt(expense[i].amount);
+        }
+      }
+      monthData.deficit = monthData.totalIncome - monthData.totalExpense;
       res.render('stats', {
         title: 'Statistics | Expense Tracker',
         data: data,
