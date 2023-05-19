@@ -32,31 +32,38 @@
         <p>TOTAL<br>INCOME</p>
       </div>
     </div>
-    <h6 class="summary-income-expense">You got ₹<%=monthData.deficit%> left in <%=monthData.month.slice(0,3)%>
-    </h6>
+    <%if (monthData.totalIncome> 0 && monthData.deficit < 0){%>
+        <h6 class="summary-income-expense">You are short of <span>₹<%=(monthData.deficit)*-1%></span> than your Income
+          in
+          this month
+        </h6>
+        <%}else if (monthData.totalIncome> 0 && monthData.deficit > 0){%>
+          <h6 class="summary-income-expense">You got <span>₹<%=monthData.deficit%></span> left in this month
+          </h6>
+          <%}%>
 
-    <% for (const i in data){%>
-      <div class="single-expense stats-expenses-income">
-        <p class="ms-name">
-          <%= i.toUpperCase()%>
-        </p>
-        <div>
-          <p class="ms-amount">
-            <% if (data[i].type=="debit" ){%>
-              <i class="fa-solid fa-indian-rupee-sign"></i>
-              <span>
-                <%=data[i].amount%>
-              </span>
-              <span style="color: #cf354c; font-size: 1.5rem;" }>Dt</span>
-              <%} else {%>
-                <i class="fa-solid fa-indian-rupee-sign"></i>
-                <span>
-                  <%=data[i].amount%>
-                </span>
-                <span style="color: green; font-size: 1.5rem;" }>Cr</span>
-                <%}%>
-          </p>
-        </div>
-      </div>
-      <%}%>
+            <% for (const i in data){%>
+              <div class="single-expense stats-expenses-income">
+                <p class="ms-name">
+                  <%= i.toUpperCase()%>
+                </p>
+                <div>
+                  <p class="ms-amount">
+                    <% if (data[i].type=="debit" ){%>
+                      <i class="fa-solid fa-indian-rupee-sign"></i>
+                      <span>
+                        <%=data[i].amount%>
+                      </span>
+                      <span style="color: #cf354c; font-size: 1.5rem;" }>Dt</span>
+                      <%} else {%>
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                        <span>
+                          <%=data[i].amount%>
+                        </span>
+                        <span style="color: green; font-size: 1.5rem;" }>Cr</span>
+                        <%}%>
+                  </p>
+                </div>
+              </div>
+              <%}%>
   </div>

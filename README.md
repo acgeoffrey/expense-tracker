@@ -1,4 +1,4 @@
-Full Stack Expense Tracker App.
+Full Stack Budget Tracker App.
 
 ## Table of contents
 
@@ -16,7 +16,7 @@ Full Stack Expense Tracker App.
 
 ### Overview
 
-- This is a Full Stack Expense Tracker Application. You can log all the daily expenses. And view the statistics of the where have you spend the money for every month.
+- This is a Full Stack Budget Tracker Application. You can log all the daily expenses and also you can keep track of your income. And view the statistics of on which segments you have been spending the money for every month.
 
 ### Screenshot
 
@@ -39,7 +39,7 @@ Full Stack Expense Tracker App.
 
 - Must have NodeJs and MongoDB installed.
 - Install all needed npm dependencies from package.json.
-- Get client id and client secret for implementing Google authentication store those in the environment variables.
+- Get client id and client secret for implementing Google authentication and create a secret key for encryption and store those in the environment variables.
 - "npm start" (or) "npm run dev" if you need to compile sass files.
 - Server should run on "http://localhost:8000/".
 
