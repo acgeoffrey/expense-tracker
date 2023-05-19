@@ -1,18 +1,24 @@
 const mongoose = require('mongoose');
+const crypto = require('../config/crypto');
 
 const userSchema = new mongoose.Schema(
   {
     email: {
       type: String,
+      get: crypto.decrypt,
+      set: crypto.encrypt,
       required: true,
-      unique: true,
     },
     name: {
       type: String,
+      get: crypto.decrypt,
+      set: crypto.encrypt,
       required: true,
     },
     avatar: {
       type: String,
+      get: crypto.decrypt,
+      set: crypto.encrypt,
     },
     tags: [
       {
@@ -25,5 +31,4 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);

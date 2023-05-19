@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const Expense = require('../models/expense');
 const Dates = require('../models/date');
+const crypto = require('../config/crypto');
 
 module.exports.create = async (req, res) => {
   try {
@@ -23,6 +24,10 @@ module.exports.create = async (req, res) => {
       } else {
         tag = 'others';
       }
+      console.log(
+        crypto.encrypt(req.body.name),
+        crypto.decrypt(crypto.encrypt(req.body.name))
+      );
       let newExpense = await Expense.create({
         name: req.body.name,
         amount: req.body.amount,
@@ -115,13 +120,16 @@ module.exports.stats = async (req, res) => {
         data[expense[i].tag].amount += parseInt(expense[i].amount);
       }
     }
-
-    res.render('stats', {
-      title: 'Statistics | Expense Tracker',
-      data: data,
-      monthData: monthData,
-      link: 'Dashboard',
-    });
+    if (req.isAuthenticated()) {
+      res.render('stats', {
+        title: 'Statistics | Expense Tracker',
+        data: data,
+        monthData: monthData,
+        link: 'Dashboard',
+      });
+    } else {
+      res.redirect('/');
+    }
   } catch (err) {
     console.log(err);
   }
