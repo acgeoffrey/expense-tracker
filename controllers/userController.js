@@ -11,7 +11,7 @@ module.exports.dashboard = async function (req, res) {
     }
     let date = await Dates.find({ date: today, user: req.user }).populate({
       path: 'expenses',
-      options: { sort: [{ cost: -1 }] },
+      options: { sort: [{ amount: -1 }] },
     });
     if (req.isAuthenticated()) {
       return res.render('dashboard', {

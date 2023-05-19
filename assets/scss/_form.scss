@@ -37,6 +37,27 @@
     @include input;
   }
 
+  #radio-btn-div {
+    height: 2rem;
+    @include flex(space-evenly);
+
+    div {
+      height: 2rem;
+      @include flex(center);
+    }
+    .radio-btn {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin: 0;
+      margin-right: 0.5rem;
+    }
+
+    label {
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+  }
+
   .btn-form {
     font-family: $font;
     font-size: 1.6rem;

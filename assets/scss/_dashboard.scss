@@ -24,6 +24,12 @@
   }
 }
 
+.total-expense-income {
+  width: 100%;
+  @include flex(center);
+  gap: 5rem;
+}
+
 .total-today {
   @include amountDisplay;
   div {

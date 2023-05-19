@@ -12,32 +12,47 @@
     <h1>
       <%=monthData.month%>
     </h1>
-
-    <div class="month-stats month-stats-total">
-      <p class="ms-name">
-        TOTAL
-      </p>
-      <div>
-        <p class="ms-amount">
+    <div id="expense-income-div">
+      <div class="total-today total-month">
+        <div>
           <i class="fa-solid fa-indian-rupee-sign"></i>
-          <span>
-            <%=monthData.total%>
-          </span>
-        </p>
+          <p class="tt-para">
+            <%=monthData.totalExpense%>
+          </p>
+        </div>
+        <p>TOTAL<br>SPENT</p>
+      </div>
+      <div class="total-today total-month">
+        <div>
+          <i class="fa-solid fa-indian-rupee-sign"></i>
+          <p class="tt-para">
+            <%=monthData.totalIncome%>
+          </p>
+        </div>
+        <p>TOTAL<br>INCOME</p>
       </div>
     </div>
 
     <% for (const i in data){%>
-      <div class="month-stats">
+      <div class="single-expense stats-expenses-income">
         <p class="ms-name">
           <%= i.toUpperCase()%>
         </p>
         <div>
           <p class="ms-amount">
-            <i class="fa-solid fa-indian-rupee-sign"></i>
-            <span>
-              <%=data[i]%>
-            </span>
+            <% if (data[i].type=="debit" ){%>
+              <i class="fa-solid fa-indian-rupee-sign"></i>
+              <span>
+                <%=data[i].amount%>
+              </span>
+              <span style="color: #cf354c; font-size: 1.5rem;" }>Dt</span>
+              <%} else {%>
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                <span>
+                  <%=data[i].amount%>
+                </span>
+                <span style="color: green; font-size: 1.5rem;" }>Cr</span>
+                <%}%>
           </p>
         </div>
       </div>

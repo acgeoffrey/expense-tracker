@@ -17,17 +17,28 @@ module.exports.create = async (req, res) => {
       } else {
         dates = dateFind[0];
       }
+      let tag;
+      if (req.body.tag) {
+        tag = req.body.tag;
+      } else {
+        tag = 'others';
+      }
       let newExpense = await Expense.create({
         name: req.body.name,
-        cost: req.body.cost,
+        amount: req.body.amount,
+        type: req.body.type,
         user: req.user,
         date: dates,
         notes: req.body.notes,
-        tag: req.body.tag,
+        tag: tag,
       });
 
       dates.expenses.push(newExpense);
-      dates.totalExpense += parseInt(req.body.cost);
+      if (req.body.type == 'debit') {
+        dates.totalExpense += parseInt(req.body.amount);
+      } else {
+        dates.totalIncome += parseInt(req.body.amount);
+      }
       dates.save();
 
       return res.redirect('back');
@@ -42,7 +53,11 @@ module.exports.destroy = async (req, res) => {
     const expense = await Expense.findById(req.params.id);
     const date = await Dates.findById(expense.date);
     if (expense.user == req.user.id || date.user == req.user.id) {
-      date.totalExpense = date.totalExpense - expense.cost;
+      if (expense.type == 'debit') {
+        date.totalExpense = date.totalExpense - expense.amount;
+      } else {
+        date.totalIncome = date.totalIncome - expense.amount;
+      }
       expense.deleteOne();
       await Dates.findByIdAndUpdate(date.id, {
         $pull: { expenses: req.params.id },
@@ -60,7 +75,8 @@ module.exports.stats = async (req, res) => {
   try {
     let data = {};
     let monthData = {
-      total: 0,
+      totalExpense: 0,
+      totalIncome: 0,
       month:
         new Date().toLocaleString('default', { month: 'long' }) +
         ' ' +
@@ -80,18 +96,23 @@ module.exports.stats = async (req, res) => {
     for (let i = 0; i < dates.length; i++) {
       let a = parseInt(dates[i].date.slice(3));
       if (a == today) {
-        monthData.total += dates[i].totalExpense;
+        monthData.totalExpense += dates[i].totalExpense;
+        monthData.totalIncome += dates[i].totalIncome;
       }
     }
 
     const expense = await Expense.find({ user: req.user }).populate('date');
     for (let i = 0; i < expense.length; i++) {
-      data[expense[i].tag] = 0;
+      data[expense[i].tag] = {
+        amount: 0,
+        type: expense[i].type,
+      };
     }
+
     for (let i = 0; i < expense.length; i++) {
       let a = parseInt(expense[i].date.date.slice(3));
       if (a == today) {
-        data[expense[i].tag] += parseInt(expense[i].cost);
+        data[expense[i].tag].amount += parseInt(expense[i].amount);
       }
     }
 

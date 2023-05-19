@@ -1,13 +1,26 @@
 <%const today=new Date().toLocaleDateString('en-GB').split('/').reverse().join('-')%>
   <div class="add-expense-div hidden">
     <div id="add-expense-form">
-      <h3>Add an Expense</h3>
+      <h3>Add an Expense/Income</h3>
       <form action="/create" method="post">
         <input type="date" name="date" value="<%= today%>" max="<%=today%>" required> <br>
-        <input type="text" name="name" placeholder="Expense made for?" required> <br>
-        <input type="number" name="cost" placeholder="Amount" required> <br>
+        <div id="radio-btn-div">
+          <div>
+
+            <input type="radio" class="radio-btn" name="type" id="credit-radio" value="credit">
+            <label for="credit-radio">Income</label>
+          </div>
+          <div>
+
+            <input type="radio" class="radio-btn" name="type" id="debit-radio" value="debit" checked="true">
+            <label for="debit-radio">Expense</label>
+          </div>
+        </div>
+        <br>
+        <input type="text" name="name" placeholder="Spent on? / Income from?" required> <br>
+        <input type="number" name="amount" placeholder="Amount" required> <br>
         <input type="text" name="notes" placeholder="Notes (optional)"> <br>
-        <select name="tag" id="tag-select" required>
+        <select name="tag" id="tag-select">
           <option value="">-- Select a Tag--</option>
           <% for (item of user.tags){%>
             <option value="<%= item %>">

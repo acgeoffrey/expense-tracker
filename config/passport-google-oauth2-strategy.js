@@ -25,7 +25,7 @@ passport.use(
             name: profile.displayName,
             email: profile.emails[0].value,
             avatar: profile.photos[0].value,
-            tags: ['food', 'travel', 'shopping'],
+            tags: ['food', 'travel', 'shopping', 'income', 'others'],
           });
 
           return done(null, createUser);

@@ -98,6 +98,19 @@
     width: 80%;
   }
 
+  .total-month {
+    padding: 2rem;
+    div {
+      gap: 1.25rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+    .tt-para {
+      font-size: 4.2rem;
+    }
+  }
+
   .month-stats {
     width: 60%;
   }
@@ -137,8 +150,15 @@
 
   #dashboard-div {
     margin-top: 9rem;
+
     h6 {
       margin-top: 5rem;
+    }
+  }
+
+  #stats-div {
+    h1 {
+      margin-bottom: 3rem;
     }
   }
 
@@ -160,6 +180,17 @@
         font-size: 5rem;
       }
     }
+  }
+
+  #expense-income-div {
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .total-month {
+    margin: 0;
+    transform: translate(0);
   }
   .single-expense {
     width: 95%;
@@ -194,24 +225,6 @@
       }
       span {
         font-size: 2.2rem;
-      }
-    }
-  }
-
-  .month-stats-total {
-    width: 90%;
-    height: 7rem;
-
-    .ms-name {
-      font-size: 2.5rem;
-    }
-
-    .ms-amount {
-      i {
-        font-size: 2rem;
-      }
-      span {
-        font-size: 3.5rem;
       }
     }
   }
@@ -305,14 +318,16 @@
     height: 8rem;
     margin: 1rem 0;
     margin-bottom: 3rem;
-    margin-left: 50%;
-    transform: translateX(-50%);
     div {
       gap: 1.3rem;
       p {
         font-size: 4.5rem;
       }
     }
+  }
+
+  .total-month {
+    margin-bottom: 0;
   }
   .single-expense {
     width: 100%;

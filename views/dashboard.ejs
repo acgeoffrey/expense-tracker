@@ -41,7 +41,7 @@
                       <%=dates.totalExpense%>
                     </p>
                   </div>
-                  <p>INR</p>
+                  <p>TOTAL<br>SPENT</p>
                 </div>
                 <div>
                   <ul>
@@ -61,12 +61,20 @@
                           </p>
                         </div>
                         <div class="single-cost-del">
-
-                          <p>
-                            <i class="fa-solid fa-indian-rupee-sign"></i>
-                            <%= expense.cost %>
-                          </p>
-                          <a href="/delete/<%= expense._id %>"><i class="fa-solid fa-trash"></i></a>
+                          <% if (expense.type=="debit" ) {%>
+                            <p>
+                              <i class="fa-solid fa-indian-rupee-sign"></i>
+                              <%= expense.amount %>
+                                <span style="color: #cf354c; font-size: 1.5rem;" }>Dt</span>
+                            </p>
+                            <%} else {%>
+                              <p>
+                                <i class="fa-solid fa-indian-rupee-sign"></i>
+                                <%= expense.amount %>
+                                  <span style="color: green; font-size: 1.5rem;" }>Cr</span>
+                              </p>
+                              <%}%>
+                                <a href="/delete/<%= expense._id %>"><i class="fa-solid fa-trash"></i></a>
                         </div>
                       </li>
                       <%}%>
@@ -82,7 +90,7 @@
     <%} else {%>
       <div id="warning-not-found">
         <img src="/images/warning.svg" alt="Not-Found">
-        <h1>No Expenses were logged on this date!</h1>
+        <h1>No Expenses/Income were logged on this date!</h1>
       </div>
       <button id="add-expense-btn" class="add-expense btn">
         <i class="fa-solid fa-plus"></i>
