@@ -258,6 +258,8 @@
     height: 8rem;
     margin: 1rem 0;
     margin-bottom: 3rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
   }
   .total-today div {
     gap: 1.3rem;
@@ -265,7 +267,15 @@
   .total-today div p {
     font-size: 4.5rem;
   }
+  #stats-div h1 {
+    margin-bottom: 1.5rem;
+  }
+  #expense-income-div {
+    gap: 0.5rem;
+  }
   .total-month {
+    margin-left: 0%;
+    transform: translateX(0%);
     margin-bottom: 0;
   }
   .single-expense {
@@ -286,31 +296,14 @@
   .se-notes {
     font-size: 1.2rem;
   }
-  .month-stats {
-    width: 95%;
-    height: 5rem;
-  }
-  .month-stats .ms-name {
+  .ms-name {
     font-size: 1.7rem;
   }
-  .month-stats .ms-amount i {
+  .ms-amount i {
     font-size: 1.4rem;
   }
-  .month-stats .ms-amount span {
+  .ms-amount span {
     font-size: 2rem;
-  }
-  .month-stats-total {
-    width: 100%;
-    height: 6rem;
-  }
-  .month-stats-total .ms-name {
-    font-size: 2.5rem;
-  }
-  .month-stats-total .ms-amount i {
-    font-size: 1.6rem;
-  }
-  .month-stats-total .ms-amount span {
-    font-size: 2.5rem;
   }
 }
 /**** 360px ****/
