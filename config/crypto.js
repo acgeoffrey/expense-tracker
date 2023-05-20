@@ -1,6 +1,7 @@
 const crypto = require('crypto');
+const bcrypt = require('bcrypt');
 const algorithm = 'aes-256-cbc'; //Using AES encryption
-const key = process.env.ET_SECRET_KEY;
+const key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
 
 //Encryption
@@ -23,4 +24,9 @@ module.exports.decrypt = function decrypt(data) {
   let decrypted = decipher.update(encryptedText);
   decrypted = Buffer.concat([decrypted, decipher.final()]);
   return decrypted.toString();
+};
+
+module.exports.bcryptFn = async (data) => {
+  const salt = '$2b$10$noWmcLDjOza8Lgk6fU89LO';
+  return await bcrypt.hash(data, salt);
 };

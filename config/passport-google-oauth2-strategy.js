@@ -12,9 +12,10 @@ passport.use(
     },
     async function (accessToken, refreshToken, profile, done) {
       try {
+        const emailDB = await crypto.bcryptFn(profile.emails[0].value);
         //Finding user if already present
         const user = await User.findOne({
-          email: profile.emails[0].value,
+          email: emailDB,
         }).exec();
 
         if (user) {
@@ -24,7 +25,7 @@ passport.use(
           //Creating new user if user is not found
           const createUser = await User.create({
             name: profile.displayName,
-            email: profile.emails[0].value,
+            email: emailDB,
             avatar: profile.photos[0].value,
             tags: ['food', 'travel', 'shopping', 'income', 'others'],
           });
