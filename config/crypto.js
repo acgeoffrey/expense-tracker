@@ -27,6 +27,6 @@ module.exports.decrypt = function decrypt(data) {
 };
 
 module.exports.bcryptFn = async (data) => {
-  const salt = '$2b$10$noWmcLDjOza8Lgk6fU89LO';
+  const salt = process.env.ET_SALT;
   return await bcrypt.hash(data, salt);
 };
