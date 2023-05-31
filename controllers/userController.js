@@ -5,18 +5,29 @@ const Dates = require('../models/date');
 /*** Render the Dashboard ***/
 module.exports.dashboard = async function (req, res) {
   try {
+    let specificDate = false;
     let today = new Date().toLocaleDateString('en-GB').split('/').join('-');
     if (req.body.date) {
+      specificDate = true;
       today = req.body.date.split('-').reverse().join('-');
     }
     let date = await Dates.find({ date: today, user: req.user }).populate({
       path: 'expenses',
       options: { sort: [{ amount: -1 }] },
     });
+
+    let otherDates = await Dates.find({ user: req.user })
+      .sort({ date: -1 })
+      .populate({
+        path: 'expenses',
+      });
+
     if (req.isAuthenticated()) {
       return res.render('dashboard', {
         title: 'Dashboard | Expense Tracker',
         dates: date[0],
+        otherDates: otherDates,
+        specificDate: specificDate,
         link: 'Stats',
       });
     } else {

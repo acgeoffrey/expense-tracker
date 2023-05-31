@@ -39,6 +39,10 @@
   .month-stats-total {
     width: 60%;
   }
+  .others-se {
+    margin-top: 10rem;
+    padding-top: 3rem;
+  }
 }
 /**** 800px ****/
 @media (max-width: 50em) {
@@ -162,6 +166,13 @@
   }
   #stats-div h1 {
     font-size: 2.5rem;
+  }
+  .others-se {
+    margin-top: 5rem;
+    padding-top: 0rem;
+  }
+  .other-date-text {
+    margin-top: 1rem;
   }
   .month-stats {
     width: 80%;
