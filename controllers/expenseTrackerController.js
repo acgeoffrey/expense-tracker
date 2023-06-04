@@ -88,6 +88,7 @@ module.exports.stats = async (req, res) => {
       let today = parseInt(
         new Date().toLocaleDateString('en-GB').split('/').join('-').slice(3)
       );
+      console.log(req.body.month);
       if (req.body.month) {
         today = parseInt(req.body.month.split('-').reverse().join('-'));
         monthData.month = new Date(req.body.month).toLocaleString('default', {
