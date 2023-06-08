@@ -1,47 +1,72 @@
-<%const today=new Date().toLocaleDateString('en-GB').split('/').reverse().join('-')%>
-  <div class="add-expense-div hidden">
-    <div id="add-expense-form">
-      <h3>Add an Expense/Income</h3>
-      <form action="/create" method="post">
-        <input type="date" name="date" value="<%= today%>" max="<%=today%>" required> <br>
-        <div id="radio-btn-div">
-          <div>
-
-            <input type="radio" class="radio-btn" name="type" id="credit-radio" value="credit">
-            <label for="credit-radio">Income</label>
-          </div>
-          <div>
-
-            <input type="radio" class="radio-btn" name="type" id="debit-radio" value="debit" checked="true">
-            <label for="debit-radio">Expense</label>
-          </div>
+<%const today=new
+Date().toLocaleDateString('en-GB').split('/').reverse().join('-')%>
+<div class="add-expense-div hidden">
+  <div id="add-expense-form">
+    <h3>Add an Expense/Income</h3>
+    <form action="/create" method="post" id="new-entry-form">
+      <input
+        type="date"
+        name="date"
+        value="<%= today%>"
+        max="<%=today%>"
+        required
+      />
+      <br />
+      <div id="radio-btn-div">
+        <div>
+          <input
+            type="radio"
+            class="radio-btn"
+            name="type"
+            id="credit-radio"
+            value="credit"
+          />
+          <label for="credit-radio">Income</label>
         </div>
-        <br>
-        <input type="text" name="name" placeholder="Spent on? / Income from?" required> <br>
-        <input type="number" name="amount" placeholder="Amount" required> <br>
-        <input type="text" name="notes" placeholder="Notes (optional)"> <br>
-        <select name="tag" id="tag-select">
-          <option value="">-- Select a Tag--</option>
-          <% for (item of user.tags){%>
-            <option value="<%= item %>">
-              <%= item.charAt(0).toUpperCase() + item.slice(1) %>
-            </option>
-            <%} %>
-        </select> <br>
-        <button type="submit" class="btn-form">Add Expense/Income</button>
-      </form>
-    </div>
-
-    <div id="add-tag-form">
-      <h3>Add Tags</h3>
-      <form action="/add-tags/<%= user.id %>" method="post">
-        <input type="text" name="tag" id="add-tag" placeholder="Enter Tag Name"> <br>
-        <button type="submit" class="btn-form">
-          Add Tag
-        </button>
-      </form>
-    </div>
-    <div id="close-form-div">
-      <i class="fa-solid fa-xmark"></i>
-    </div>
+        <div>
+          <input
+            type="radio"
+            class="radio-btn"
+            name="type"
+            id="debit-radio"
+            value="debit"
+            checked="true"
+          />
+          <label for="debit-radio">Expense</label>
+        </div>
+      </div>
+      <br />
+      <input
+        type="text"
+        name="name"
+        placeholder="Spent on? / Income from?"
+        required
+      />
+      <br />
+      <input type="number" name="amount" placeholder="Amount" required /> <br />
+      <input type="text" name="notes" placeholder="Notes (optional)" /> <br />
+      <select name="tag" id="tag-select">
+        <option value="">-- Select a Tag--</option>
+        <% for (item of user.tags){%>
+        <option value="<%= item %>">
+          <%= item.charAt(0).toUpperCase() + item.slice(1) %>
+        </option>
+        <%} %>
+      </select>
+      <br />
+      <button type="submit" class="btn-form">Add Expense/Income</button>
+    </form>
   </div>
+
+  <div id="add-tag-form">
+    <h3>Add Tags</h3>
+    <form action="/add-tags/<%= user.id %>" method="post">
+      <input type="text" name="tag" id="add-tag" placeholder="Enter Tag Name" />
+      <br />
+      <button type="submit" class="btn-form">Add Tag</button>
+    </form>
+  </div>
+  <div id="close-form-div">
+    <i class="fa-solid fa-xmark"></i>
+  </div>
+</div>

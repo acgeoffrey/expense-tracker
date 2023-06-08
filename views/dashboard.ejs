@@ -1,145 +1,120 @@
-<%const today=new Date().toLocaleDateString('en-GB').split('/').reverse().join('-')%>
-  <%- include('_form') -%>
-    <div id="change-date-dash">
-      <form action="/dashboard" method="post">
-        <label for="date">Change Date: </label> <br>
-        <input type="date" name="date" max="<%= today %>" required>
-        <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-      </form>
+<%const today=new
+Date().toLocaleDateString('en-GB').split('/').reverse().join('-')%> <%-
+include('_form') -%>
+<div id="change-date-dash">
+  <form action="/dashboard" method="post">
+    <label for="date">Change Date: </label> <br />
+    <input type="date" name="date" max="<%= today %>" required />
+    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+  </form>
+</div>
+<div id="dashboard-div">
+  <div id="name-icon-div">
+    <div id="dash-name">
+      <h4>Hello,</h4>
+      <h1><%= user.name %></h1>
     </div>
-    <div id="dashboard-div">
-      <div id="name-icon-div">
+    <div id="calendar-icon">
+      <i class="fa-solid fa-calendar-days"></i>
+    </div>
+  </div>
 
-        <div id="dash-name">
-          <h4>Hello,</h4>
-          <h1>
-            <%= user.name %>
-          </h1>
-        </div>
-        <div id="calendar-icon">
-          <i class="fa-solid fa-calendar-days"></i>
-        </div>
-      </div>
-
-      <% if (dates) {%>
-        <% if (dates.date==today.split('-').reverse().join('-')) {%>
-          <div>
-            <h6>TODAY (<%=dates.date%>)</h6>
+  <% if (dates) {%> <% if (dates.date==today.split('-').reverse().join('-')) {%>
+  <div>
+    <h6>TODAY (<%=dates.date%>)</h6>
+  </div>
+  <%} else {%>
+  <div>
+    <h6><%=dates.date%></h6>
+  </div>
+  <%}%> <% if (dates) {%>
+  <div class="total-today">
+    <div>
+      <i class="fa-solid fa-indian-rupee-sign"></i>
+      <p class="tt-para"><%=dates.totalExpense%></p>
+    </div>
+    <p>TOTAL<br />SPENT</p>
+  </div>
+  <div id="entry-container">
+    <ul>
+      <% for (expense of dates.expenses) {%>
+      <li class="single-expense">
+        <div class="single-expense-left">
+          <div class="single-name-tag">
+            <p><%= expense.name %></p>
+            <p class="se-tag"><%=expense.tag%></p>
           </div>
+          <p class="se-notes"><%= expense.notes %></p>
+        </div>
+        <div class="single-cost-del">
+          <% if (expense.type=="debit" ) {%>
+          <p>
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+            <%= expense.amount %>
+            <span style="color: #cf354c; font-size: 1.5rem" }>Dt</span>
+          </p>
           <%} else {%>
-            <div>
-              <h6>
-                <%=dates.date%>
-              </h6>
-            </div>
-            <%}%>
-              <% if (dates) {%>
-                <div class="total-today">
-                  <div>
-                    <i class="fa-solid fa-indian-rupee-sign"></i>
-                    <p class="tt-para">
-                      <%=dates.totalExpense%>
-                    </p>
-                  </div>
-                  <p>TOTAL<br>SPENT</p>
-                </div>
-                <div>
-                  <ul>
-                    <% for (expense of dates.expenses) {%>
-                      <li class="single-expense">
-                        <div class="single-expense-left">
-                          <div class="single-name-tag">
-                            <p>
-                              <%= expense.name %>
-                            </p>
-                            <p class="se-tag">
-                              <%=expense.tag%>
-                            </p>
-                          </div>
-                          <p class="se-notes">
-                            <%= expense.notes %>
-                          </p>
-                        </div>
-                        <div class="single-cost-del">
-                          <% if (expense.type=="debit" ) {%>
-                            <p>
-                              <i class="fa-solid fa-indian-rupee-sign"></i>
-                              <%= expense.amount %>
-                                <span style="color: #cf354c; font-size: 1.5rem;" }>Dt</span>
-                            </p>
-                            <%} else {%>
-                              <p>
-                                <i class="fa-solid fa-indian-rupee-sign"></i>
-                                <%= expense.amount %>
-                                  <span style="color: green; font-size: 1.5rem;" }>Cr</span>
-                              </p>
-                              <%}%>
-                                <a href="/delete/<%= expense._id %>"><i class="fa-solid fa-trash"></i></a>
-                        </div>
-                      </li>
-                      <%}%>
-                  </ul>
-                </div>
+          <p>
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+            <%= expense.amount %>
+            <span style="color: green; font-size: 1.5rem" }>Cr</span>
+          </p>
+          <%}%>
+          <a href="/delete/<%= expense._id %>"
+            ><i class="fa-solid fa-trash"></i
+          ></a>
+        </div>
+      </li>
+      <%}%>
+    </ul>
+  </div>
 
-                <%}%>
+  <%}%> <%} else {%>
+  <div id="warning-not-found">
+    <img src="/images/warning.svg" alt="Not-Found" />
+    <h1>No Expenses/Income were logged on this date!</h1>
+  </div>
 
-                  <%} else {%>
-                    <div id="warning-not-found">
-                      <img src="/images/warning.svg" alt="Not-Found">
-                      <h1>No Expenses/Income were logged on this date!</h1>
-                    </div>
+  <%}%> <% if (!specificDate && otherDates.length> 0) {%>
+  <div class="others-se">
+    <ul>
+      <% for (dates of otherDates) {%> <% if (dates.date
+      !=today.split('-').reverse().join('-')) {%>
+      <h6 class="other-date-text"><%= dates.date %></h6>
+      <% for (expense of dates.expenses) {%>
+      <li class="single-expense">
+        <div class="single-expense-left">
+          <div class="single-name-tag">
+            <p><%= expense.name %></p>
+            <p class="se-tag"><%=expense.tag%></p>
+          </div>
+          <p class="se-notes"><%= expense.notes %></p>
+        </div>
+        <div class="single-cost-del">
+          <% if (expense.type=="debit" ) {%>
+          <p>
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+            <%= expense.amount %>
+            <span style="color: #cf354c; font-size: 1.5rem" }>Dt</span>
+          </p>
+          <%} else {%>
+          <p>
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+            <%= expense.amount %>
+            <span style="color: green; font-size: 1.5rem" }>Cr</span>
+          </p>
+          <%}%>
+          <a href="/delete/<%= expense._id %>"
+            ><i class="fa-solid fa-trash"></i
+          ></a>
+        </div>
+      </li>
+      <%}%> <%}%> <% } %>
+    </ul>
+  </div>
+  <% } %>
 
-                    <%}%>
-
-
-                      <% if (!specificDate && otherDates.length> 0) {%>
-                        <div class="others-se">
-                          <ul>
-                            <% for (dates of otherDates) {%>
-                              <% if (dates.date !=today.split('-').reverse().join('-')) {%>
-                                <h6 class="other-date-text">
-                                  <%= dates.date %>
-                                </h6>
-                                <% for (expense of dates.expenses) {%>
-                                  <li class="single-expense">
-                                    <div class="single-expense-left">
-                                      <div class="single-name-tag">
-                                        <p>
-                                          <%= expense.name %>
-                                        </p>
-                                        <p class="se-tag">
-                                          <%=expense.tag%>
-                                        </p>
-                                      </div>
-                                      <p class="se-notes">
-                                        <%= expense.notes %>
-                                      </p>
-                                    </div>
-                                    <div class="single-cost-del">
-                                      <% if (expense.type=="debit" ) {%>
-                                        <p>
-                                          <i class="fa-solid fa-indian-rupee-sign"></i>
-                                          <%= expense.amount %>
-                                            <span style="color: #cf354c; font-size: 1.5rem;" }>Dt</span>
-                                        </p>
-                                        <%} else {%>
-                                          <p>
-                                            <i class="fa-solid fa-indian-rupee-sign"></i>
-                                            <%= expense.amount %>
-                                              <span style="color: green; font-size: 1.5rem;" }>Cr</span>
-                                          </p>
-                                          <%}%>
-                                            <a href="/delete/<%= expense._id %>"><i class="fa-solid fa-trash"></i></a>
-                                    </div>
-                                  </li>
-                                  <%}%>
-                                    <%}%>
-                                      <% } %>
-                          </ul>
-                        </div>
-                        <% } %>
-
-                          <button id="add-expense-btn" class="add-expense btn">
-                            <i class="fa-solid fa-plus"></i>
-                          </button>
-    </div>
+  <button id="add-expense-btn" class="add-expense btn">
+    <i class="fa-solid fa-plus"></i>
+  </button>
+</div>
