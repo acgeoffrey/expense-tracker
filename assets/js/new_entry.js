@@ -13,8 +13,8 @@
         success: function (data) {
           let newEntry = newEntryDOM(data.data.newEntry);
           $('#entry-container>ul').prepend(newEntry);
-
           newEntryForm[0].reset();
+          $('#tt-para').text(data.data.totalExpense);
         },
         error: function (error) {
           console.log(error.responseText);

@@ -46,6 +46,7 @@ module.exports.create = async (req, res) => {
         return res.status(200).json({
           data: {
             newEntry: newExpense,
+            totalExpense: dates.totalExpense,
           },
           message: 'New entry logged successfully!',
         });
