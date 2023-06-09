@@ -54,7 +54,7 @@ nav img {
   width: 10rem;
   height: 3rem;
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 500;
   text-align: center;
 }
 
@@ -438,6 +438,21 @@ nav img {
 }
 .summary-income-expense span {
   font-weight: 700;
+}
+
+.se-amount-percentage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 2rem;
+}
+
+.se-percentage {
+  background-color: rgb(233, 233, 233);
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: 2px solid black;
 }
 
 .mobile-nav {

@@ -13,8 +13,16 @@
         success: function (data) {
           let newEntry = newEntryDOM(data.data.newEntry);
           $('#entry-container>ul').prepend(newEntry);
-          newEntryForm[0].reset();
           $('#tt-para').text(data.data.totalExpense);
+          newEntryForm[0].reset();
+          new Noty({
+            theme: 'relax',
+            text: `${data.data.newEntry.name} is logged!`,
+            type: 'success',
+            layout: 'topRight',
+            timeout: 5000,
+          }).show();
+          deleteEntry($(' .delete-entry', newEntry));
         },
         error: function (error) {
           console.log(error.responseText);
@@ -60,6 +68,24 @@
                         </div>
                       </li>
     `;
+  };
+
+  //Method to delete entry
+  let deleteEntry = function (deleteLink) {
+    $(deleteLink).click(function (e) {
+      e.preventDefault();
+
+      $.ajax({
+        type: 'get',
+        url: $(deleteLink).prop('href'),
+        success: function (data) {
+          $(`#se-${data.data.id}`).remove();
+        },
+        error: function (error) {
+          console.log(error.responseText);
+        },
+      });
+    });
   };
 
   createEntry();

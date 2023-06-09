@@ -1,69 +1,66 @@
-<%let month=new Date().toLocaleDateString('en-GB').split('/').reverse().join('-').slice(0,7)%>
-  <div id="stats-div">
-
-    <div id="stats-form">
-
-      <form action="/dashboard/stats" method="post">
-        <input type="month" name="month" max="<%=month%>" placeholder="YYYY-MM(<%=month%>)" required>
-        <button type="submit">Get Summary</button>
-      </form>
-    </div>
-
-    <h1>
-      <%=monthData.month%>
-    </h1>
-    <div id="expense-income-div">
-      <div class="total-today total-month">
-        <div>
-          <i class="fa-solid fa-indian-rupee-sign"></i>
-          <p class="tt-para">
-            <%=monthData.totalExpense%>
-          </p>
-        </div>
-        <p>TOTAL<br>SPENT</p>
-      </div>
-      <div class="total-today total-month">
-        <div>
-          <i class="fa-solid fa-indian-rupee-sign"></i>
-          <p class="tt-para">
-            <%=monthData.totalIncome%>
-          </p>
-        </div>
-        <p>TOTAL<br>INCOME</p>
-      </div>
-    </div>
-    <%if (monthData.totalIncome> 0 && monthData.deficit < 0){%>
-        <h6 class="summary-income-expense">You are short of <span>₹<%=(monthData.deficit)*-1%></span> than your Income
-          in
-          this month
-        </h6>
-        <%}else if (monthData.totalIncome> 0 && monthData.deficit > 0){%>
-          <h6 class="summary-income-expense">You got <span>₹<%=monthData.deficit%></span> left in this month
-          </h6>
-          <%}%>
-
-            <% for (const i in data){%>
-              <div class="single-expense stats-expenses-income">
-                <p class="ms-name">
-                  <%= i.toUpperCase()%>
-                </p>
-                <div>
-                  <p class="ms-amount">
-                    <% if (data[i].type=="debit" ){%>
-                      <i class="fa-solid fa-indian-rupee-sign"></i>
-                      <span>
-                        <%=data[i].amount%>
-                      </span>
-                      <span style="color: #cf354c; font-size: 1.5rem;" }>Dt</span>
-                      <%} else {%>
-                        <i class="fa-solid fa-indian-rupee-sign"></i>
-                        <span>
-                          <%=data[i].amount%>
-                        </span>
-                        <span style="color: green; font-size: 1.5rem;" }>Cr</span>
-                        <%}%>
-                  </p>
-                </div>
-              </div>
-              <%}%>
+<%let month=new
+Date().toLocaleDateString('en-GB').split('/').reverse().join('-').slice(0,7)%>
+<div id="stats-div">
+  <div id="stats-form">
+    <form action="/dashboard/stats" method="post">
+      <input
+        type="month"
+        name="month"
+        max="<%=month%>"
+        placeholder="YYYY-MM(<%=month%>)"
+        required
+      />
+      <button type="submit">Get Summary</button>
+    </form>
   </div>
+
+  <h1><%=monthData.month%></h1>
+  <div id="expense-income-div">
+    <div class="total-today total-month">
+      <div>
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+        <p class="tt-para"><%=monthData.totalExpense%></p>
+      </div>
+      <p>TOTAL<br />SPENT</p>
+    </div>
+    <div class="total-today total-month">
+      <div>
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+        <p class="tt-para"><%=monthData.totalIncome%></p>
+      </div>
+      <p>TOTAL<br />INCOME</p>
+    </div>
+  </div>
+  <%if (monthData.totalIncome> 0 && monthData.deficit < 0){%>
+  <h6 class="summary-income-expense">
+    You are short of <span>₹<%=(monthData.deficit)*-1%></span> than your Income
+    in this month
+  </h6>
+  <%}else if (monthData.totalIncome> 0 && monthData.deficit > 0){%>
+  <h6 class="summary-income-expense">
+    You got <span>₹<%=monthData.deficit%></span> left in this month
+  </h6>
+  <%}%> <% for (const i in data){%>
+  <div class="single-expense stats-expenses-income">
+    <p class="ms-name"><%= i.toUpperCase()%></p>
+    <div class="se-amount-percentage">
+      <p class="ms-amount">
+        <% if (data[i].type=="debit" ){%>
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+        <span> <%=data[i].amount%> </span>
+        <span style="color: #cf354c; font-size: 1.5rem" }>Dt</span>
+        <%} else {%>
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+        <span> <%=data[i].amount%> </span>
+        <span style="color: green; font-size: 1.5rem" }>Cr</span>
+        <%}%>
+      </p>
+      <% if (data[i].type=="debit" && data[i].percentage >= 0){%>
+      <p class="se-percentage" style="font-size: 1.5rem">
+        <%= data[i].percentage %> <span>%</span>
+      </p>
+      <%}%>
+    </div>
+  </div>
+  <%}%>
+</div>

@@ -74,6 +74,16 @@ module.exports.destroy = async (req, res) => {
         $pull: { expenses: req.params.id },
       });
       date.save();
+
+      if (req.xhr) {
+        return res.status(200).json({
+          data: {
+            id: req.params.id,
+          },
+          message: 'Entry deleted',
+        });
+      }
+
       req.flash('success', 'Expense deleted!');
       return res.redirect('back');
     }
@@ -95,6 +105,7 @@ module.exports.stats = async (req, res) => {
           ' ' +
           new Date().toLocaleDateString('en-GB').split('/').join('-').slice(6),
       };
+
       let today = parseInt(
         new Date().toLocaleDateString('en-GB').split('/').join('-').slice(3)
       );
@@ -120,6 +131,7 @@ module.exports.stats = async (req, res) => {
         data[expense[i].tag] = {
           amount: 0,
           type: expense[i].type,
+          percentage: 0,
         };
       }
 
@@ -130,6 +142,15 @@ module.exports.stats = async (req, res) => {
         }
       }
       monthData.deficit = monthData.totalIncome - monthData.totalExpense;
+
+      for (let i in data) {
+        data[i].percentage = (
+          (data[i].amount / monthData.totalExpense) *
+          100
+        ).toFixed(1);
+        // console.log(data[i].percentage);
+      }
+
       res.render('stats', {
         title: 'Statistics | Expense Tracker',
         data: data,

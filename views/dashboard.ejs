@@ -38,7 +38,7 @@ include('_form') -%>
   <div id="entry-container">
     <ul>
       <% for (expense of dates.expenses) {%>
-      <li class="single-expense">
+      <li class="single-expense" id="se-<%= expense._id %>">
         <div class="single-expense-left">
           <div class="single-name-tag">
             <p><%= expense.name %></p>
@@ -60,7 +60,7 @@ include('_form') -%>
             <span style="color: green; font-size: 1.5rem" }>Cr</span>
           </p>
           <%}%>
-          <a href="/delete/<%= expense._id %>"
+          <a href="/delete/<%= expense._id %>" class="delete-entry"
             ><i class="fa-solid fa-trash"></i
           ></a>
         </div>

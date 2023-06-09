@@ -69,3 +69,16 @@
     font-weight: 700;
   }
 }
+
+.se-amount-percentage {
+  @include flex(center);
+  flex-direction: row-reverse;
+  gap: 2rem;
+}
+
+.se-percentage {
+  background-color: rgb(233, 233, 233);
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: 2px solid black;
+}
