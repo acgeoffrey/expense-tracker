@@ -71,7 +71,7 @@ module.exports.destroySession = function (req, res) {
 module.exports.addTags = async (req, res) => {
   try {
     if (req.user) {
-      const tag = req.body.tag;
+      const tag = req.body.tag.toLowerCase();
       const user = await User.findById(req.params.id);
       user.tags.push(tag);
       user.save();

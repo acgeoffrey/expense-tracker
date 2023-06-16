@@ -126,6 +126,15 @@
   #stats-form {
     margin-bottom: 3rem;
   }
+
+  #list-chart-container {
+    flex-direction: column-reverse;
+    gap: 5rem;
+  }
+
+  #list-container {
+    width: 100%;
+  }
 }
 
 /**** 600px ****/

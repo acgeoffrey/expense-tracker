@@ -23,4 +23,12 @@
     $('#calendar-icon').css('display', 'none');
     $('#change-date-dash').css('display', 'block');
   });
+
+  $('#credit-radio').click(function () {
+    $('#tag-select').attr('disabled', true);
+  });
+
+  $('#debit-radio').click(function () {
+    $('#tag-select').attr('disabled', false);
+  });
 }

@@ -33,8 +33,10 @@ router.get(
 
 router.get('/signout', userController.destroySession);
 
+//Summary
 router.get('/dashboard/stats', expenseTrackerController.stats);
 router.post('/dashboard/stats', expenseTrackerController.stats);
+router.get('/api/stats', expenseTrackerController.getStats);
 
 /*** CRUD ***/
 router.post('/create', expenseTrackerController.create);

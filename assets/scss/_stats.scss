@@ -82,3 +82,13 @@
   border-radius: 1rem;
   border: 2px solid black;
 }
+
+#list-chart-container {
+  margin-top: 5rem;
+  width: 100%;
+  @include flex(center);
+}
+
+#list-container {
+  width: 60%;
+}

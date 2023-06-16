@@ -455,6 +455,18 @@ nav img {
   border: 2px solid black;
 }
 
+#list-chart-container {
+  margin-top: 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#list-container {
+  width: 60%;
+}
+
 .mobile-nav {
   position: fixed;
   top: 7rem;
