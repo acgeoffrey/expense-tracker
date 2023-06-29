@@ -47,11 +47,11 @@ Date().toLocaleDateString('en-GB').split('/').reverse().join('-')%>
       <input type="text" name="notes" placeholder="Notes (optional)" /> <br />
       <select name="tag" id="tag-select">
         <option value="">-- Select a Tag--</option>
-        <% for (item of user.tags){%>
+        <% for (item of user.tags){%> <% if (item !== 'income'){%>
         <option value="<%= item %>">
           <%= item.charAt(0).toUpperCase() + item.slice(1) %>
         </option>
-        <%} %>
+        <%}%> <%} %>
       </select>
       <br />
       <button type="submit" class="btn-form">Add Expense/Income</button>
@@ -59,11 +59,24 @@ Date().toLocaleDateString('en-GB').split('/').reverse().join('-')%>
   </div>
 
   <div id="add-tag-form">
-    <h3>Add Tags</h3>
-    <form action="/add-tags/<%= user.id %>" method="post">
+    <h3>Add/Remove Tags</h3>
+    <form method="post">
       <input type="text" name="tag" id="add-tag" placeholder="Enter Tag Name" />
       <br />
-      <button type="submit" class="btn-form">Add Tag</button>
+      <button
+        type="submit"
+        onclick="javascript: form.action='/add-tags/<%= user.id %>';"
+        class="btn-form"
+      >
+        Add Tag
+      </button>
+      <button
+        type="submit"
+        onclick="javascript: form.action='/remove-tags/<%= user.id %>';"
+        class="btn-form btn-form-remove"
+      >
+        Remove Tag
+      </button>
     </form>
   </div>
   <div id="close-form-div">

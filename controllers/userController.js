@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const Expense = require('../models/expense');
 const Dates = require('../models/date');
+const { redirect } = require('express/lib/response');
 
 /*** Render the Dashboard ***/
 module.exports.dashboard = async function (req, res) {
@@ -73,6 +74,12 @@ module.exports.addTags = async (req, res) => {
     if (req.user) {
       const tag = req.body.tag.toLowerCase();
       const user = await User.findById(req.params.id);
+      user.tags.forEach((item) => {
+        if (item === tag) {
+          req.flash('error', `${tag} Tag already exists!`);
+          return res.redirect('back');
+        }
+      });
       user.tags.push(tag);
       user.save();
       req.flash('success', `${tag} Tag added!`);
@@ -80,5 +87,26 @@ module.exports.addTags = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+  }
+};
+
+/*** Remove Tags ***/
+module.exports.removeTags = async (req, res) => {
+  try {
+    if (req.user) {
+      const tag = req.body.tag.toLowerCase();
+      const user = await User.findById(req.params.id);
+      const index = user.tags.indexOf(tag);
+      if (index === -1) {
+        req.flash('error', `${tag} Tag does not exist!`);
+        res.redirect('back');
+      }
+      user.tags.splice(index, 1);
+      user.save();
+      req.flash('success', `${tag} Tag removed!`);
+      res.redirect('back');
+    }
+  } catch (error) {
+    console.log(error);
   }
 };

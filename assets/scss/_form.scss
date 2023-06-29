@@ -73,6 +73,11 @@
     transform: translateX(-50%);
     margin-top: 1rem;
   }
+  .btn-form-remove {
+    border-color: #cf354c;
+    background-color: #ff9baa;
+    color: white;
+  }
 }
 
 #close-form-div {
@@ -84,4 +89,9 @@
   i {
     font-size: 2rem;
   }
+}
+
+#add-tag {
+  margin-left: 50%;
+  transform: translateX(-50%);
 }

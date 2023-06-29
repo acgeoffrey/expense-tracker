@@ -42,5 +42,6 @@ router.get('/api/stats', expenseTrackerController.getStats);
 router.post('/create', expenseTrackerController.create);
 router.get('/delete/:id', expenseTrackerController.destroy);
 router.post('/add-tags/:id', userController.addTags);
+router.post('/remove-tags/:id', userController.removeTags);
 
 module.exports = router;
