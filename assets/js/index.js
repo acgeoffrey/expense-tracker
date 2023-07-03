@@ -26,9 +26,15 @@
 
   $('#credit-radio').click(function () {
     $('#tag-select').attr('disabled', true);
+    $('#btn-form-ei').html('Add Income');
+    $('#head-form-ei').html('Add an Income');
+    $('#input-form-ei').attr('placeholder', 'Income from?');
   });
 
   $('#debit-radio').click(function () {
     $('#tag-select').attr('disabled', false);
+    $('#btn-form-ei').html('Add Expense');
+    $('#head-form-ei').html('Add an Expense');
+    $('#input-form-ei').attr('placeholder', 'Spent on?');
   });
 }

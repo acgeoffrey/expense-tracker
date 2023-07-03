@@ -2,7 +2,7 @@
 Date().toLocaleDateString('en-GB').split('/').reverse().join('-')%>
 <div class="add-expense-div hidden">
   <div id="add-expense-form">
-    <h3>Add an Expense/Income</h3>
+    <h3 id="head-form-ei">Add an Expense</h3>
     <form action="/create" method="post" id="new-entry-form">
       <input
         type="date"
@@ -39,7 +39,8 @@ Date().toLocaleDateString('en-GB').split('/').reverse().join('-')%>
       <input
         type="text"
         name="name"
-        placeholder="Spent on? / Income from?"
+        id="input-form-ei"
+        placeholder="Spent on?"
         required
       />
       <br />
@@ -54,7 +55,9 @@ Date().toLocaleDateString('en-GB').split('/').reverse().join('-')%>
         <%}%> <%} %>
       </select>
       <br />
-      <button type="submit" class="btn-form">Add Expense/Income</button>
+      <button type="submit" class="btn-form" id="btn-form-ei">
+        Add Expense
+      </button>
     </form>
   </div>
 
