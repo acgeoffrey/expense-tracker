@@ -18,7 +18,7 @@ module.exports.dashboard = async function (req, res) {
     });
 
     let otherDates = await Dates.find({ user: req.user })
-      .sort({ date: -1 })
+      .sort('-date')
       .limit(10)
       .populate({
         path: 'expenses',
