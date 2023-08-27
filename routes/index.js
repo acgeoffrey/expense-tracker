@@ -37,6 +37,7 @@ router.get('/signout', userController.destroySession);
 router.get('/dashboard/stats', expenseTrackerController.stats);
 router.post('/dashboard/stats', expenseTrackerController.stats);
 router.get('/api/stats', expenseTrackerController.getStats);
+router.get('/api/export', expenseTrackerController.exportAllData);
 
 /*** CRUD ***/
 router.post('/create', expenseTrackerController.create);

@@ -219,3 +219,22 @@ module.exports.getStats = async (req, res) => {
     console.log(error);
   }
 };
+
+module.exports.exportAllData = async (req, res) => {
+  try {
+    if (req.isAuthenticated()) {
+      const expenses = await Expense.find({ user: req.user });
+
+      res.status(200).json({
+        status: 'success',
+        expenses,
+      });
+    } else {
+      res.status(401).json({
+        message: 'You are not Authorized!',
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
